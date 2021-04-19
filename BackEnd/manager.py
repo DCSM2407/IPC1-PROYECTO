@@ -53,6 +53,11 @@ class manager:
     def ObtenerMedicamentos(self):
         return json.dumps([ob.__dict__ for ob in self.medicamentos])
 
+    def RetornoAdmin(self):
+        for i in self.usuarios:
+            if i.tipo == 'admin':
+                return i
+
     def eliminarUsuario(self,user):
         for dato in self.usuarios:
             if(dato.usuario==user):

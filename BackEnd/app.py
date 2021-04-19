@@ -59,6 +59,12 @@ def enfermera():
 def admin():
     return Manager.ObtenerAdmin()
 
+# PARA MOSTRAR DATOS ADMIN EN MODIFICAR
+@app.route('/mostrarAdmin')
+def adminGet():
+    user = Manager.RetornoAdmin()
+    return jsonify({'nombre':user.nombre,'apellido':user.apellido,'fecha':user.fecha,'sexo':user.sexo,'telefono':user.telefono,'password':user.password}) 
+
 # PARA OBTENER DATOS DE MEDICAMENTOS
 @app.route('/medicamento')
 def medicamento():
@@ -76,6 +82,7 @@ def eliminarMedicamento(medicina):
     if (Manager.eliminarMedicamento(medicina)):
         return 'Medicamento Eliminado'
     return 'Error'
+
 @app.route('/modificarAdmin/<user>',methods=["PUT"])
 def modificarAdmin(user):
     dato=request.json
