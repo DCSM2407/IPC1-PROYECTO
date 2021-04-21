@@ -8,13 +8,13 @@ class manager:
         self.usuarios =[]
         self.medicamentos =[]
       
-        self.usuarios.append(usuario('Carlos','Campaneros','admin',"1234",'02/11/2021','M','12345678','ninguna','admin'))
-        self.usuarios.append(usuario('Dilan','Suy','dilan',"suy",'02/11/2021','M','12345678','oftamologo','doctor'))
-        self.usuarios.append(usuario('Conaher','Miranda','conaher',"suy",'02/11/2021','M','12345678','oftamologo','doctor'))
-        self.usuarios.append(usuario('Cinthia','Lopez','yess',"suy",'02/11/2021','F','12345678','oftamologo','enfermera'))
-        self.usuarios.append(usuario('Yesenia','Lopez','yess2',"suy",'02/11/2021','F','12345678','oftamologo','enfermera'))
-        self.usuarios.append(usuario('Nataly','Guzman','nat',"123",'02/11/2021','F','12345678','oftamologo','paciente'))
-        self.usuarios.append(usuario('Sarai','Guzman','nat2',"123",'02/11/2021','F','12345678','oftamologo','paciente'))
+        self.usuarios.append(usuario('Carlos','Campaneros','admin',"1234",'24/07/1998','M','12345678','ninguna','admin'))
+        self.usuarios.append(usuario('Dilan','Suy','dilan',"suy",'24/07/1998','M','12345678','oftamologo','doctor'))
+        self.usuarios.append(usuario('Conaher','Miranda','conaher',"suy",'24/07/1998','M','12345678','oftamologo','doctor'))
+        self.usuarios.append(usuario('Cinthia','Lopez','yess',"suy",'24/07/1998','F','12345678','oftamologo','enfermera'))
+        self.usuarios.append(usuario('Yesenia','Lopez','yess2',"suy",'24/07/1998','F','12345678','oftamologo','enfermera'))
+        self.usuarios.append(usuario('Nataly','Guzman','nat',"123",'24/07/1998','F','12345678','oftamologo','paciente'))
+        self.usuarios.append(usuario('Sarai','Guzman','nat2',"123",'24/07/1998','F','12345678','oftamologo','paciente'))
         self.medicamentos.append(medicamento('Paracetamol',"125.20","Para dolor de Cabeza","20"))
         self.medicamentos.append(medicamento('Acetaminofen',"12.50","Para dolor de Cabeza","20"))
     
@@ -58,6 +58,26 @@ class manager:
             if i.tipo == 'admin':
                 return i
 
+    def RetornoDoc(self, user):
+        for i in self.usuarios:
+            if i.usuario == user:
+                return i
+    
+    def RetornoEnfer(self, user):
+        for i in self.usuarios:
+            if i.usuario == user:
+                return i
+    
+    def RetornoPac(self, user):
+        for i in self.usuarios:
+            if i.usuario == user:
+                return i
+    
+    def RetornoMedic(self, medical):
+        for i in self.medicamentos:
+            if i.nombre == medical:
+                return i
+
     def eliminarUsuario(self,user):
         for dato in self.usuarios:
             if(dato.usuario==user):
@@ -76,5 +96,33 @@ class manager:
         for data in self.usuarios:
             if (data.usuario == user):
                 self.usuarios[self.usuarios.index(data)]=Usuario
+                return True
+        return False
+
+    def modificarDoc(self,user,Usuario):
+        for data in self.usuarios:
+            if (data.usuario == user and data.tipo == 'doctor'):
+                self.usuarios[self.usuarios.index(data)]=Usuario
+                return True
+        return False
+
+    def modificarEnfer(self,user,Usuario):
+        for data in self.usuarios:
+            if (data.usuario == user and data.tipo == 'enfermera'):
+                self.usuarios[self.usuarios.index(data)]=Usuario
+                return True
+        return False
+
+    def modificarPac(self,user,Usuario):
+        for data in self.usuarios:
+            if (data.usuario == user and data.tipo == 'paciente'):
+                self.usuarios[self.usuarios.index(data)]=Usuario
+                return True
+        return False
+
+    def modificarMed(self,medical,medicina):
+        for data in self.medicamentos:
+            if (data.nombre == medical):
+                self.medicamentos[self.medicamentos.index(data)]=medicina
                 return True
         return False

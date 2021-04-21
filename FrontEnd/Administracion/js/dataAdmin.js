@@ -1,3 +1,4 @@
+
 //FUNCION PARA ELIMINAR DOCTORES
 function eliminarDoctor(usuario){
     fetch('http://localhost:8000/user/'+usuario, {
@@ -78,8 +79,8 @@ function ActualizarDoctor(){
                                     <td>${data[i].especialidad}</td>
                                     <td>${data[i].usuario}</td>
                                     <td>${data[i].tipo}</td>
-									<td><button onclick=" eliminarDoctor('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
-										<button onclick=" eliminarDoctor('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
+									<td><button onclick=" AbrirDoctor('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
+										<button onclick=" ModificarDoctor('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
 										<button onclick=" eliminarDoctor('${data[i].usuario}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
 									</tr>
                                     `
@@ -122,8 +123,8 @@ function ActualizarEnfermera(){
                                     <td>${data[i].sexo}</td>
                                     <td>${data[i].usuario}</td>
                                     <td>${data[i].tipo}</td>
-									<td><button onclick=" eliminarEnfermera('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
-										<button onclick=" eliminarEnfermera('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
+									<td><button onclick=" AbrirEnfermera('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
+										<button onclick=" ModificarEnfermera('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
 										<button onclick=" eliminarEnfermera('${data[i].usuario}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
                                     </tr>
                                     `
@@ -163,8 +164,8 @@ function ActualizarMedicamento(){
                                     <td>${data[i].precio}</td>
                                     <td>${data[i].descripcion}</td>
                                     <td>${data[i].cantidad}</td>
-									<td><button onclick=" eliminarMedicamento('${data[i].nombre}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
-										<button onclick=" eliminarMedicamento('${data[i].nombre}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
+									<td><button onclick=" AbrirMedicamento('${data[i].nombre}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
+										<button onclick=" ModificarMedicamento('${data[i].nombre}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
 										<button onclick=" eliminarMedicamento('${data[i].nombre}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
                                     </tr>
                                     `
@@ -207,8 +208,8 @@ function ActualizarPaciente(){
                                     <td>${data[i].sexo}</td>
                                     <td>${data[i].usuario}</td>
                                     <td>${data[i].tipo}</td>
-									<td><button onclick=" eliminarPaciente('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
-										<button onclick=" eliminarPaciente('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
+									<td><button onclick=" AbrirPaciente('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
+										<button onclick=" ModificarPac('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
 										<button onclick=" eliminarPaciente('${data[i].usuario}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
                                     </tr>
                                     `
@@ -219,6 +220,65 @@ function ActualizarPaciente(){
                         document.getElementById("tablausers").innerHTML = text2;
                     });
 }
+
+
+// FUNCION PARA ABRIR HTML MOSTRAR DOCTOR
+function AbrirDoctor(doctor){
+    sessionStorage.setItem("dato",doctor)
+    console.log(doctor);
+    window.location.href='../Administracion/mostrarDoctores.html'
+}
+
+// FUNCION PARA ABRIR HTML MODIFICAR DOCTOR
+function ModificarDoctor(doctor){
+    sessionStorage.setItem("dato",doctor)
+    console.log(doctor);
+    window.location.href='../Administracion/modificarDoctores.html'
+}
+
+
+// FUNCION PARA ABRIR HTML MOSTRAR PACIENTE
+function AbrirPaciente(paciente){
+    sessionStorage.setItem("dato3",paciente)
+    console.log(paciente);
+    window.location.href='../Administracion/mostrarPaciente.html'
+}
+
+// FUNCION PARA ABRIR HTML MODIFICAR PACIENTE
+function ModificarPac(dato){
+    sessionStorage.setItem("dato3",dato)
+    console.log(dato);
+    window.location.href='../Administracion/modificarPaciente.html'
+}
+
+// FUNCION PARA ABRIR HTML MOSTRAR ENFERMERA
+function AbrirEnfermera(enfermera){
+    sessionStorage.setItem("dato1",enfermera)
+    console.log(enfermera);
+    window.location.href='../Administracion/mostrarEnfermera.html'
+}
+
+// FUNCION PARA ABRIR HTML MODIFICAR ENFERMERA
+function ModificarEnfermera(enfermera){
+    sessionStorage.setItem("dato1",enfermera)
+    console.log(enfermera);
+    window.location.href='../Administracion/modificarEnfermera.html'
+}
+
+// FUNCION PARA ABRIR HTML MOSTRAR MEDICAMENTO
+function AbrirMedicamento(medicamento){
+    sessionStorage.setItem("dato2",medicamento)
+    console.log(medicamento);
+    window.location.href='../Administracion/mostrarMedicamento.html'
+}
+
+// FUNCION PARA ABRIR HTML MODIFICAR MEDICAMENTO
+function ModificarMedicamento(medicamento){
+    sessionStorage.setItem("dato2",medicamento)
+    console.log(medicamento);
+    window.location.href='../Administracion/modificarMedicamento.html'
+}
+
 
 
 

@@ -3,9 +3,6 @@ function Mostrar(){
     var usuario = document.getElementById("usuario");
     var nombre = document.getElementById("nombre");
     var apellido = document.getElementById("apellido");
-    var fecha = document.getElementById("fecha");
-    var sexo = document.getElementById("sexo");
-    var telefono = document.getElementById("telefono");
     var pass = document.getElementById("pass")
 
   fetch(`http://localhost:8000/mostrarAdmin`)
@@ -13,9 +10,6 @@ function Mostrar(){
   .then(data =>{
       nombre.value=data.nombre;
       apellido.value=data.apellido;
-      fecha.value=data.fecha;
-      sexo.value=data.sexo;
-      telefono.value=data.telefono;
       pass.value=data.password;
     
   });
@@ -27,9 +21,6 @@ function modifiarAdmin(){
     var usuario = document.getElementById("usuario");
     var nombre = document.getElementById("nombre");
     var apellido = document.getElementById("apellido");
-    var fecha = document.getElementById("fecha");
-    var sexo = document.getElementById("sexo");
-    var telefono = document.getElementById("telefono");
     var pass = document.getElementById("pass")
     let headers = new Headers();
 	headers.append('Content-Type', 'application/json');
@@ -40,9 +31,9 @@ function modifiarAdmin(){
             "apellido":"${apellido.value}",
             "usuario":"${usuario.value}",
             "password":"${pass.value}",
-            "fecha":"${fecha.value}",
-            "sexo":"${sexo.value}",
-            "telefono":"${telefono.value}",
+            "fecha":"2021-07-24",
+            "sexo":"M",
+            "telefono":"40404040",
             "especialidad":"ninguna",
             "tipo":"admin"
       }`
@@ -58,9 +49,6 @@ function modifiarAdmin(){
         nombre.value=''
         apellido.value=''
         pass.value=''
-        fecha.value=''
-        sexo.value=''
-        telefono.value=''
          alert("Cambio Realizado")
       })
       .catch(error => {

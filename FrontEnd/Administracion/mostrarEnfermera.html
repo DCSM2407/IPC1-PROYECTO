@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Administracion | Enfermeras</title>
+<title>Mostrar | Enfermera</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -41,9 +41,9 @@
 					<li><a href="administracion.html">Inicio</a></li>
 					<li><a href="pacientes.html">Paciente</a></li>
 					<li><a href="doctores.html">Doctor</a></li>
-					<li><a href="#home">Enfermera</a></li>
+					<li><a href="enfermeras.html">Enfermera</a></li>
 					<li><a href="medicamento.html">Medicamento</a></li>
-					<li><a href="modificarAdmin.html">Perfil</a></li>
+					<li><a href="#home">Perfil</a></li>
 					<li><a href="../Principal/index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
@@ -61,15 +61,27 @@
 <section id="home" style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">MÓDULO <br /> ENFERMERAS <br /><br /><br/><i><img
+			<h1 class="toptitle">MOSTRAR DATOS<br /> DE ENFERMERAS <br /><br /><br/><i><img
 				src="assets/img/icon.png"></i>
 			</h1>								
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
-						<h3>Cargar Enfermeras Por CSV</h3>
-						<input type="file" name="archivoEnfermeras" accept="CSV/csv, .csv, .CSV">
-						<input type="submit" id="subirEnfermeras" onclick="location.href='registro.html'" class="clearfix btn" value="Cargar Enfermeras">
+						<h4>Nombre</h4>
+						<input type="text" id="nombre" placeholder="Nombre *" disabled>
+						<h4>Apellido</h4>
+						<input type="text" id="apellido" placeholder="Apellido *" disabled>
+						<h4>Sexo</h4>
+						<input type="text" id="sexo" placeholder="Sexo * -  Coloque M o F" disabled>
+						<h4>Fecha Nacimiento</h4>
+						<input type="text" id="fecha" placeholder="fecha *" disabled>
+						<h4>Telefono</h4>
+						<input type="text" id="telefono" placeholder="Telefono *" disabled>
+						<h4>Usuario</h4>
+						<input type="text" id="usuario"  placeholder="usuario" disabled> 
+						<h4>Password</h4>
+						<input type="text" id="pass" placeholder="Password *" disabled>
+						<input type="submit" id="modificar" onclick="location.href='enfermeras.html'"  class="clearfix btn" value="REGRESAR A ENFERMERAS">
 					</div>
 				</form>
 				<div class="done">
@@ -81,69 +93,6 @@
 			</div>							
 		</div>
 		</div>
-</section>
-
-<!-- MOSTRAR LISTADO DE ENFERMERAS-->>
-<section id="services" class="services margintop60">
-	<div class="container">
-		<div class="sow-headline">
-			<h1>LISTADO DE ENFERMERAS</h1>
-			<div class="decoration">
-				<div class="decoration-inside">
-				</div>
-			</div>
-		</div>
-		<div >
-			<div id="tablausers" class="row">
-                <script>
-                    let text2=`<table class="table">
-                                <thead>
-                                <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Sexo</th>
-                                <th scope="col">Usuario</th>
-                                <th scope="col">Tipo Usuario</th>
-                                <th scope="col">Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>`;
-                    fetch('http://localhost:8000/enfermeras')
-                    .then(response => response.json())
-                    .then(data =>{
-                        var i;
-
-                        for(i=0;i<data.length;i++){
-                            text2+= `
-                                    <tr>
-                                    <th scope="row">${i+1}</th>
-                                    <td>${data[i].nombre}</td>
-                                    <td>${data[i].apellido}</td>
-                                    <td>${data[i].sexo}</td>
-                                    <td>${data[i].usuario}</td>
-                                    <td>${data[i].tipo}</td>
-									<td><button onclick=" AbrirEnfermera('${data[i].usuario}')"  style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
-										<button onclick=" ModificarEnfermera('${data[i].usuario}')"  style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
-										<button onclick=" eliminarEnfermera('${data[i].usuario}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
-                                    </tr>
-                                    `
-                            console.log(data[i].nombre,'prueba')
-                        }
-                        text2+=`</tbody>
-                                </table>`
-                        document.getElementById("tablausers").innerHTML = text2;
-                    });
-
-                  
-                </script>
-             </div>
-			 <div>
-				<br>
-			</div>
-			
-		</div>
-	</div>
 </section>
 
 <!-- THE END OF SECTIONS -->	
@@ -181,5 +130,7 @@
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
 <script src="js/dataAdmin.js"></script>
+<script src="js/datosEnfermera.js"></script>
+
 </body>
 </html>

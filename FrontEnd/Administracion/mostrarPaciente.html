@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Administracion | Pacientes</title>
+<title>Mostrar | Pacientes</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -39,11 +39,11 @@
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
 					<li><a href="administracion.html">Inicio</a></li>
-					<li><a href="#home">Paciente</a></li>
+					<li><a href="pacientes.html">Paciente</a></li>
 					<li><a href="doctores.html">Doctor</a></li>
 					<li><a href="enfermeras.html">Enfermera</a></li>
 					<li><a href="medicamento.html">Medicamento</a></li>
-					<li><a href="medicamento.html">Perfil</a></li>
+					<li><a href="#home">Perfil</a></li>
 					<li><a href="../Principal/index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
@@ -61,21 +61,27 @@
 <section id="home" style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">VISTA DE<br /> PACIENTES <br /><br /><br/><i><img
+			<h1 class="toptitle">MOSTRAR DATOS<br /> DE PACIENTES <br /><br /><br/><i><img
 				src="assets/img/icon.png"></i>
 			</h1>								
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
+						<h4>Nombre</h4>
 						<input type="text" id="nombre" placeholder="Nombre *" disabled>
+						<h4>Apellido</h4>
 						<input type="text" id="apellido" placeholder="Apellido *" disabled>
-						<input type="date" id="fecha" placeholder="fecha *" disabled>
+						<h4>Sexo</h4>
 						<input type="text" id="sexo" placeholder="Sexo * -  Coloque M o F" disabled>
+						<h4>Fecha Nacimiento</h4>
+						<input type="text" id="fecha" placeholder="fecha *" disabled>
+						<h4>Telefono</h4>
 						<input type="text" id="telefono" placeholder="Telefono *" disabled>
-						<input type="text" id="usuario" placeholder="Usuario *" disabled> 
+						<h4>Usuario</h4>
+						<input type="text" id="usuario"  placeholder="usuario" disabled> 
+						<h4>Password</h4>
 						<input type="text" id="pass" placeholder="Password *" disabled>
-						
-						<input type="submit" id="registro" onclick="Registro()"  class="clearfix btn" value="REGISTRATE">
+						<input type="submit" id="modificar" onclick="location.href='pacientes.html'"  class="clearfix btn" value="REGRESAR A PACIENTES">
 					</div>
 				</form>
 				<div class="done">
@@ -124,6 +130,7 @@
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
 <script src="js/dataAdmin.js"></script>
+<script src="js/datosPaciente.js"></script>
 
 </body>
 </html>

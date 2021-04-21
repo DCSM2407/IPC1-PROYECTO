@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from manager import manager
 from usuario import usuario
+from medicamento import medicamento
 app = Flask(__name__)
 
 CORS(app)
@@ -63,11 +64,36 @@ def admin():
 @app.route('/mostrarAdmin')
 def adminGet():
     user = Manager.RetornoAdmin()
-    return jsonify({'nombre':user.nombre,'apellido':user.apellido,'fecha':user.fecha,'sexo':user.sexo,'telefono':user.telefono,'password':user.password}) 
+    return jsonify({'nombre':user.nombre,'apellido':user.apellido,'password':user.password}) 
+
+# PARA MOSTRAR DATOS DE DOCTORES 
+@app.route('/mostarDoc/<doc>')
+def doctorGet(doc):
+    user = Manager.RetornoDoc(doc)
+    return jsonify({'usuario':user.usuario,'nombre':user.nombre,'apellido':user.apellido,'fecha':user.fecha,'sexo':user.sexo,'telefono':user.telefono,'especialidad':user.especialidad,'password':user.password}) 
+
+# PARA MOSTRAR DATOS DE ENFERMERAS 
+@app.route('/mostrarEnfer/<enfermera>')
+def enferGet(enfermera):
+    user = Manager.RetornoEnfer(enfermera)
+    return jsonify({'usuario':user.usuario,'nombre':user.nombre,'apellido':user.apellido,'fecha':user.fecha,'sexo':user.sexo,'telefono':user.telefono,'password':user.password}) 
+
+# PARA MOSTRAR DATOS DE ENFERMERAS 
+@app.route('/mostrarPac/<pac>')
+def pacGet(pac):
+    user = Manager.RetornoPac(pac)
+    return jsonify({'usuario':user.usuario,'nombre':user.nombre,'apellido':user.apellido,'fecha':user.fecha,'sexo':user.sexo,'telefono':user.telefono,'password':user.password}) 
+
+# PARA MOSTRAR DATOS DE ENFERMERAS 
+@app.route('/mostrarMed/<med>')
+def medGet(med):
+    medical = Manager.RetornoMedic(med)
+    return jsonify({'nombre': medical.nombre,'precio':medical.precio,'descripcion':medical.descripcion,'cantidad':medical.cantidad}) 
+
 
 # PARA OBTENER DATOS DE MEDICAMENTOS
 @app.route('/medicamento')
-def medicamento():
+def medicam():
     return Manager.ObtenerMedicamentos()
 
 # RUTA PARA BORRAR USUARIOS
@@ -89,6 +115,39 @@ def modificarAdmin(user):
     cambio = usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
     if (Manager.modificarAdmin(user,cambio)):
         return '{"Estado":"Modificado"}'
+    return '{"Estado":"Error"}'
+
+@app.route('/modificardoc/<user>', methods=["PUT"])
+def modificarDoc(user):
+    dato = request.json
+    cambio = usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
+    if (Manager.modificarDoc(user,cambio)):
+        return '{"Estado":"Doctor Modificado"}'
+    return '{"Estado":"Error"}'
+
+@app.route('/modificarEnfer/<user>', methods=["PUT"])
+def modificarEnfer(user):
+    dato = request.json
+    cambio = usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
+    if (Manager.modificarEnfer(user,cambio)):
+        return '{"Estado":"Doctor Modificado"}'
+    return '{"Estado":"Error"}'
+
+@app.route('/modificarPac/<user>', methods=["PUT"])
+def modificarPac(user):
+    dato = request.json
+    cambio = usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
+    if (Manager.modificarPac(user,cambio)):
+        return '{"Estado":"Doctor Modificado"}'
+    return '{"Estado":"Error"}'
+
+
+@app.route('/modificarMed/<med>', methods=["PUT"])
+def modificarMed(med):
+    dato = request.json
+    cambio = medicamento(dato['nombre'],dato['precio'],dato['descripcion'],dato['cantidad'])
+    if (Manager.modificarMed(med,cambio)):
+        return '{"Estado":"Doctor Modificado"}'
     return '{"Estado":"Error"}'
 
 # EJECUTA LA API :3
