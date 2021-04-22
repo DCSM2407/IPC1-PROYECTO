@@ -11,16 +11,16 @@ function Login(){
   .then(data =>{
       console.log(data.data)
     if(data.data=='admin'){
-        window.location.href='../Administracion/Administracion.html'
+        window.location.href='Administracion/Administracion.html'
     }
     else if (data.data=='doctor') {
-      window.location.href='../Doctor/doctor.html'
+      window.location.href='Doctor/doctor.html'
     } 
     else if (data.data=='enfermera') {
-      window.location.href='../Enfermera/enfemera.html'
+      window.location.href='Enfermera/enfemera.html'
     } 
     else if (data.data=='paciente') {
-      window.location.href='../Paciente/paciente.html'
+      window.location.href='Paciente/paciente.html'
     } 
     else{
         alert('Usuario/Contraseña Invalidos')
