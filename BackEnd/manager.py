@@ -31,13 +31,26 @@ class manager:
         else:
             self.usuarios.append(user)
             return True
-
+    
     def ExistenciaUser(self,user):
         for i in self.usuarios:
-            if i.usuario == user:
+            if i.usuario == user.usuario:
                 return True
         return False
 
+    def RegistrarMedicina(self, medicina):
+        validar = self.ExistenciaMedicamento(medicina)
+        if validar==True:
+            return False
+        else:
+            self.medicamentos.append(medicina)
+            return True
+
+    def ExistenciaMedicamento(self,medicina):
+        for i in self.medicamentos:
+            if i.nombre == medicina.nombre:
+                return True
+        return False
     def ObtenerDoctor(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'doctor'])
     

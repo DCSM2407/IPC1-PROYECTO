@@ -6,7 +6,7 @@ function eliminarDoctor(usuario){
       })
       .then(res => res.text()) // or res.json()
       .then(res => {
-        alert(res)
+        alert("Doctor Eliminado")
         ActualizarDoctor()
     })
 }
@@ -18,7 +18,7 @@ function eliminarEnfermera(usuario){
       })
       .then(res => res.text()) // or res.json()
       .then(res => {
-        alert(res)
+        alert("Enfermera Eliminada")
         ActualizarEnfermera()
     })
 }
@@ -30,7 +30,7 @@ function eliminarPaciente(usuario){
       })
       .then(res => res.text()) // or res.json()
       .then(res => {
-        alert(res)
+        alert("Paciente Eliminado")
         ActualizarPaciente()
     })
 }

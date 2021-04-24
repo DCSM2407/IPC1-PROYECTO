@@ -40,6 +40,52 @@ def registrar():
     else:
         return '{"estado":"El Usuario Ya Existe"}'
 
+# PARA MASIVO DOCTORES
+@app.route('/masivaDoc', methods=['POST'])
+def masivaDoc():
+    dato=request.json
+    user=usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
+    prueba=Manager.Registrarusuario(user)
+    if prueba ==True:
+        return '{"estado":"Usuario Creado Exitosamente"}'
+    else:
+        return '{"estado":"El Usuario Ya Existe"}'
+
+# PARA MASIVOS PACIENTES
+@app.route('/masivaPac', methods=['POST'])
+def masivaPac():
+    dato=request.json
+    user=usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
+    prueba=Manager.Registrarusuario(user)
+    if prueba ==True:
+        return '{"estado":"Usuario Creado Exitosamente"}'
+    else:
+        return '{"estado":"El Usuario Ya Existe"}'
+
+# PARA MASIVOS ENFERMERA
+@app.route('/masivaenfer', methods=['POST'])
+def masivaEnfer():
+    dato=request.json
+    user=usuario(dato['nombre'],dato['apellido'],dato['usuario'],dato['password'],dato['fecha'],dato['sexo'],dato['telefono'],dato['especialidad'],dato['tipo'])
+    prueba=Manager.Registrarusuario(user)
+    if prueba ==True:
+        return '{"estado":"Usuario Creado Exitosamente"}'
+    else:
+        return '{"estado":"El Usuario Ya Existe"}'
+
+# PARA MASIVOS MEDICAMENTO
+@app.route('/masivaMed', methods=['POST'])
+def masivaMed():
+    dato=request.json
+    medical=medicamento(dato['nombre'],dato['precio'],dato['descripcion'],dato['cantidad'])
+    prueba=Manager.RegistrarMedicina(medical)
+    if prueba ==True:
+        return '{"estado":"Usuario Creado Exitosamente"}'
+    else:
+        return '{"estado":"El Usuario Ya Existe"}'
+
+
+
 # PARA OBTENER DATOS DE DOCTORES   
 @app.route('/doctores')
 def doctores():

@@ -44,7 +44,7 @@
 					<li><a href="#home">Enfermera</a></li>
 					<li><a href="medicamento.html">Medicamento</a></li>
 					<li><a href="modificarAdmin.html">Perfil</a></li>
-					<li><a href="../Principal/index.html">Salir</a></li>
+					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
 			</div>
@@ -68,8 +68,8 @@
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
 						<h3>Cargar Enfermeras Por CSV</h3>
-						<input type="file" name="archivoEnfermeras" accept="CSV/csv, .csv, .CSV">
-						<input type="submit" id="subirEnfermeras" onclick="location.href='registro.html'" class="clearfix btn" value="Cargar Enfermeras">
+						<input type="file" id="archivo3" name="archivo3" accept="CSV/csv, .csv, .CSV">
+						<input type="submit" id="subirEnfermeras" class="clearfix btn" value="Cargar Enfermeras">
 					</div>
 				</form>
 				<div class="done">
@@ -185,6 +185,9 @@
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
 <script src="js/html2pdf.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/papaparse.min.js"></script>
+<script src="js/cargaMasivaEnfer.js"></script>
 <script src="js/reporteEnfer.js"></script>
 <script src="js/dataAdmin.js"></script>
 </body>
