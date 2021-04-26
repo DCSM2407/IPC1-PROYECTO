@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Doctor | Inicio</title>
+<title>Paciente | Modificar</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -38,10 +38,10 @@
 			<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
-					<li><a href="#home">Inicio</a></li>
-					<li><a href="pacientes.html">Solicitar Cita</a></li>
-					<li><a href="doctores.html">Comprar Medicamento</a></li>
-					<li><a href="medicamento.html">Perfil</a></li>
+					<li><a href="paciente.html">Inicio</a></li>
+					<li><a href="cita.html">Solicitar Cita</a></li>
+					<li><a href="comprar.html">Comprar Medicamento</a></li>
+					<li><a href="#home">Perfil</a></li>
 					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
@@ -59,14 +59,21 @@
 <section id="home" style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">BIENVENIDO <br /> DOCTOR <br /><br /><br/><i><img src="assets/img/icon.png"></i>
+			<h1 class="toptitle">MODIFICAR DATOS DE <br /> PACIENTE <br /><br /><br/><i><img src="assets/img/icon.png"></i>
 			</h1>								
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
-						<center><h3>Bienvenido Administrador</h3></center><br>
-						<p>Usted puede realizar cambios que considera necesarios en los modulos de pacientes, doctores, enfermeras y Medicamentos.  Asi como visualizar los datos de cada modulo, puede acceder a ellos en la barra de opciones.</p>
-						<br><center><img src="assets/img/logo-dark.png"></center>
+						<input type="text" id="nombre" placeholder="Nombre *">
+						<input type="text" id="apellido" placeholder="Apellido *">
+						<input type="date" id="fecha" placeholder="fecha *">
+						<input type="text" id="sexo" placeholder="Sexo * -  Coloque M o F">
+						<input type="text" id="telefono" placeholder="Telefono *">
+						<input type="text" id="usuario" placeholder="Usuario *" disabled>
+						<input type="text" id="pass" placeholder="Password *" minlength="8" required />
+						
+						<input type="submit" id="registro" onclick="modificarPac()"  class="clearfix btn" value="MODIFICAR PACIENTE">
+						<input type="submit" id="registro" onclick="location.href='paciente.html'" class="clearfix btn" value="REGRESAR AL INICIO">
 					</div>
 				</form>
 				<div class="done">
@@ -115,6 +122,8 @@
 <script src="assets/js/plugins.js"></script>
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
+<script src="../js/dataLogin.js"></script>
+<script src="js/modificar.js"></script>
 
 </body>
 </html>

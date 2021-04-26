@@ -54,6 +54,7 @@ class manager:
     def ObtenerDoctor(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'doctor'])
     
+    
     def ObtenerEnfemeras(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'enfermera'])
 
@@ -65,6 +66,9 @@ class manager:
     
     def ObtenerMedicamentos(self):
         return json.dumps([ob.__dict__ for ob in self.medicamentos])
+
+    def getPaciente(self,usuario):
+        return json.dumps([ob.__dict__ for ob in self.usuarios if ob.usuario == usuario and ob.tipo == 'paciente'])
 
     def RetornoAdmin(self):
         for i in self.usuarios:

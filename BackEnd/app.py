@@ -106,6 +106,12 @@ def enfermera():
 def admin():
     return Manager.ObtenerAdmin()
 
+# PARA OBTENER DATOS DEL PACIENTE (EN LA SECCION DE PACIENTES)
+@app.route('/pacienteM/<pac>')
+def pacienteM(pac):
+    return Manager.getPaciente(pac)
+
+
 # PARA MOSTRAR DATOS ADMIN EN MODIFICAR
 @app.route('/mostrarAdmin')
 def adminGet():

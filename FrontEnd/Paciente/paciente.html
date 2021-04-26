@@ -39,12 +39,10 @@
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
 					<li><a href="#home">Inicio</a></li>
-					<li><a href="pacientes.html">Paciente</a></li>
-					<li><a href="doctores.html">Doctor</a></li>
-					<li><a href="enfermeras.html">Enfermera</a></li>
-					<li><a href="medicamento.html">Medicamento</a></li>
-					<li><a href="medicamento.html">Perfil</a></li>
-					<li><a href="../Principal/index.html">Salir</a></li>
+					<li><a href="cita.html">Solicitar Cita</a></li>
+					<li><a href="comprar.html">Comprar Medicamento</a></li>
+					<li><a href="modificar.html">Perfil</a></li>
+					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
 			</div>
@@ -66,8 +64,8 @@
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
-						<center><h3>Bienvenido Administrador</h3></center><br>
-						<p>Usted puede realizar cambios que considera necesarios en los modulos de pacientes, doctores, enfermeras y Medicamentos.  Asi como visualizar los datos de cada modulo, puede acceder a ellos en la barra de opciones.</p>
+						<center><h3>Bienvenido Paciente</h3></center><br>
+						<p>Usted puede generar su solicitud de cita con nuestros doctores especialistas tambien puede efectuar compras del medicamento que neceista, para ello puede ver las opciones en la barra de opciones.</p>
 						<br><center><img src="assets/img/logo-dark.png"></center>
 					</div>
 				</form>
@@ -82,7 +80,67 @@
 		</div>
 </section>
 
+<!-- MOSTRAR DATOS DEL ADMIN-->>
+<!-- MOSTRAR DATOS DEL ADMIN-->>
+<section id="services" class="services margintop60">
+	<div class="container">
+		<div class="sow-headline">
+			<h1>DATOS DEL PACIENTE</h1>
+			<div class="decoration">
+				<div class="decoration-inside">
+				</div>
+			</div>
+		</div>
+		<div >
+			<div id="tablausers" class="row">
+                <script>
+                    let text2=`<table class="table">
+                                <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Sexo</th>
+                                <th scope="col">Tipo Usuario</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+					var enfermera= sessionStorage.data
+                    fetch(`http://localhost:8000/pacienteM/${enfermera}`)
+                    .then(response => response.json())
+                    .then(data =>{
+                        var i;
 
+                        
+                        for(i=0;i<data.length;i++){
+                            text2+= `
+                                    <tr>
+                                    <th scope="row">${i+1}</th>
+                                    <td>${data[i].nombre}</td>
+                                    <td>${data[i].apellido}</td>
+                                    <td>${data[i].usuario}</td>
+                                    <td>${data[i].sexo}</td>
+                                    <td>${data[i].tipo}</td>
+                                    </tr>
+                                    `
+                            console.log(data[i].nombre,'prueba')
+                        }
+                        text2+=`</tbody>
+                                </table>`
+                        document.getElementById("tablausers").innerHTML = text2;
+                    });
+
+                  
+                </script>
+             </div>
+			 <div>
+				 <br>
+			 </div>
+			
+		</div>
+	</div>
+</section>
 <!-- THE END OF SECTIONS -->	
 	
 <!-- FOOTER
@@ -117,6 +175,7 @@
 <script src="assets/js/plugins.js"></script>
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
+<script src="../js/dataLogin.js"></script>
 
 </body>
 </html>
