@@ -64,9 +64,13 @@
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
-						<center><h3>Bienvenido Administrador</h3></center><br>
-						<p>Usted puede realizar cambios que considera necesarios en los modulos de pacientes, doctores, enfermeras y Medicamentos.  Asi como visualizar los datos de cada modulo, puede acceder a ellos en la barra de opciones.</p>
-						<br><center><img src="assets/img/logo-dark.png"></center>
+						<h4>Motivo</h4>
+						<input type="text" id="motivo" placeholder="Motivo de la cita *" >
+						<h4>Fecha</h4>
+						<input type="date" id="fecha" placeholder="Precio *" >
+						<h4>Hora</h4>
+						<input type="time" id="hora" placeholder="Hora *" >
+						<input type="submit" id="registro" onclick="crearCita()"  class="clearfix btn" value="CREAR CITA">
 					</div>
 				</form>
 				<div class="done">
@@ -81,6 +85,69 @@
 </section>
 
 
+<!-- SECCION PARA MOSTRAR LAS CITAS-->
+<section id="services" class="services margintop60">
+	<div class="container">
+		<div class="sow-headline">
+			<img src="assets/img/logo-dark.png">
+			<h1>LISTADO DE CITAS</h1>
+			<div class="decoration">
+				<div class="decoration-inside">
+				</div>
+			</div>
+		</div>
+		<div >
+			<div id="tablausers" class="row">
+                <script>
+                    let text2=`<table class="table">
+                                <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Motivo</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                                <th scope="col">Doctor Asignado</th>
+                                <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+								var paciente= sessionStorage.data
+                    fetch(`http://localhost:8000/citas/${paciente}`)
+                    .then(response => response.json())
+                    .then(data =>{
+                        var i;
+
+                        
+                        for(i=0;i<data.length;i++){
+                            text2+= `
+                                    <tr>
+                                    <th scope="row">${i+1}</th>
+                                    <td>${data[i].motivo}</td>
+                                    <td>${data[i].fecha}</td>
+                                    <td>${data[i].hora}</td>
+                                    <td>${data[i].iddoctor}</td>
+                                    <td>${data[i].estado}</td>
+									</tr>
+                                    `
+                            console.log(data[i].nombre,'prueba')
+                        }
+                        text2+=`</tbody>
+                                </table>`
+                        document.getElementById("tablausers").innerHTML = text2;
+                    });
+
+                  
+                </script>
+             </div>
+			 <div>
+
+			 </div>
+		</div>
+		<div>
+			<br>
+		</div>
+	</div>
+</section>
 <!-- THE END OF SECTIONS -->	
 	
 <!-- FOOTER
@@ -115,6 +182,8 @@
 <script src="assets/js/plugins.js"></script>
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
+<script src="../js/dataLogin.js"></script>
+<script src="js/cita.js"></script>
 
 </body>
 </html>

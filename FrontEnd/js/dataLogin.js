@@ -1,5 +1,3 @@
-// ENVIAR DATO AL OTRO JS
-var userData = document.getElementById("user").value
 
 //PARA VALIDAR LOS DATOS PARA INICIAR SESION
 function Login() {

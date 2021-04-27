@@ -1,13 +1,15 @@
 # IMPORTACIONES
 from usuario import usuario
 from medicamento import medicamento
+from cita import cita
 import json     
 
 class manager:
     def __init__(self):
         self.usuarios =[]
         self.medicamentos =[]
-      
+        self.citas=[]
+
         self.usuarios.append(usuario('Carlos','Campaneros','admin',"1234",'24/07/1998','M','12345678','ninguna','admin'))
         self.usuarios.append(usuario('Dilan','Suy','dilan',"suy",'24/07/1998','M','12345678','oftamologo','doctor'))
         self.usuarios.append(usuario('Conaher','Miranda','conaher',"suy",'24/07/1998','M','12345678','oftamologo','doctor'))
@@ -15,9 +17,14 @@ class manager:
         self.usuarios.append(usuario('Yesenia','Lopez','yess2',"suy",'24/07/1998','F','12345678','oftamologo','enfermera'))
         self.usuarios.append(usuario('Nataly','Guzman','nat',"123",'24/07/1998','F','12345678','oftamologo','paciente'))
         self.usuarios.append(usuario('Sarai','Guzman','nat2',"123",'24/07/1998','F','12345678','oftamologo','paciente'))
-        self.medicamentos.append(medicamento('Paracetamol',"125.20","Para dolor de Cabeza","20"))
-        self.medicamentos.append(medicamento('Acetaminofen',"12.50","Para dolor de Cabeza","20"))
-    
+        self.medicamentos.append(medicamento('Paracetamol1',"125.20","Para dolor de Cabeza","20"))
+        self.medicamentos.append(medicamento('Acetaminofen1',"12.50","Para dolor de Cabeza","10"))
+        self.medicamentos.append(medicamento('Paracetamol2',"125.20","Para dolor de Cabeza","20"))
+        self.medicamentos.append(medicamento('Acetaminofen2',"12.50","Para dolor de Cabeza","10"))
+        self.medicamentos.append(medicamento('Paracetamol3',"125.20","Para dolor de Cabeza","20"))
+        self.medicamentos.append(medicamento('Acetaminofen3',"12.50","Para dolor de Cabeza","10"))
+        self.medicamentos.append(medicamento('Paracetamo4',"125.20","Para dolor de Cabeza","10"))
+        self.medicamentos.append(medicamento('Acetaminofen4',"12.50","Para dolor de Cabeza","10"))
     def verificarUsuario(self,user,password):
         for x in self.usuarios:
             if x.usuario==user and x.password==password:
@@ -32,6 +39,20 @@ class manager:
             self.usuarios.append(user)
             return True
     
+    def RegistrarCita(self, cita):
+        validar = self.ExisteCita(cita)
+        if validar==True:
+            return False
+        else:
+            self.citas.append(cita)
+            return True
+    
+    def ExisteCita(self, cita):
+        for i in self.citas:
+            if i.idpaciente == cita.idpaciente and i.estado == 'Pendiente' or i.estado == 'Aceptada':
+                return True
+        return False
+
     def ExistenciaUser(self,user):
         for i in self.usuarios:
             if i.usuario == user.usuario:
@@ -66,9 +87,15 @@ class manager:
     
     def ObtenerMedicamentos(self):
         return json.dumps([ob.__dict__ for ob in self.medicamentos])
+    
+    def ObtenerMedicamentoList(self):
+        return json.dumps([ob.__dict__ for ob in self.medicamentos if ob.cantidad !='0' ])
 
     def getPaciente(self,usuario):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.usuario == usuario and ob.tipo == 'paciente'])
+
+    def getCitas(self,paciente):
+        return json.dumps([ob.__dict__ for ob in self.citas if ob.idpaciente == paciente ])
 
     def RetornoAdmin(self):
         for i in self.usuarios:

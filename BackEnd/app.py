@@ -3,6 +3,7 @@ from flask_cors import CORS
 from manager import manager
 from usuario import usuario
 from medicamento import medicamento
+from cita import cita
 app = Flask(__name__)
 
 CORS(app)
@@ -39,6 +40,20 @@ def registrar():
         return '{"estado":"Usuario Creado Exitosamente"}'
     else:
         return '{"estado":"El Usuario Ya Existe"}'
+
+
+# CREAR CITASS
+@app.route('/crearCita', methods=['POST'])
+def Citas():
+    dato=request.json
+    nuevacita=cita(dato['idpaciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'],dato['iddoctor'])
+    prueba=Manager.RegistrarCita(nuevacita)
+    if prueba ==True:
+        return '{"estado":"Cita Creada"}'
+    else:
+        return '{"estado":"Ya Existe una Cita En Proceso"}'
+
+
 
 # PARA MASIVO DOCTORES
 @app.route('/masivaDoc', methods=['POST'])
@@ -111,6 +126,10 @@ def admin():
 def pacienteM(pac):
     return Manager.getPaciente(pac)
 
+# PARA OBTENER DATOS DE CITAS PARA EL LISTADO
+@app.route('/citas/<pac>')
+def getCitas(pac):
+    return Manager.getCitas(pac)
 
 # PARA MOSTRAR DATOS ADMIN EN MODIFICAR
 @app.route('/mostrarAdmin')
@@ -147,6 +166,11 @@ def medGet(med):
 @app.route('/medicamento')
 def medicam():
     return Manager.ObtenerMedicamentos()
+
+# PARA OBTENER DATOS DE MEDICAMENTOS
+@app.route('/medicamentos')
+def medical():
+    return Manager.ObtenerMedicamentoList()
 
 # RUTA PARA BORRAR USUARIOS
 @app.route('/user/<usuario>', methods=['DELETE'])
