@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Enfermera | Inicio</title>
+<title>Doctor | Modificacion</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -38,13 +38,12 @@
 			<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
-					<li><a href="#home">Inicio</a></li>
-					<li><a href="pacientes.html">Paciente</a></li>
-					<li><a href="doctores.html">Doctor</a></li>
-					<li><a href="enfermeras.html">Enfermera</a></li>
-					<li><a href="medicamento.html">Medicamento</a></li>
-					<li><a href="medicamento.html">Perfil</a></li>
-					<li><a href="../Principal/index.html">Salir</a></li>
+					<li><a href="doctor.html">Inicio</a></li>
+					<li><a href="listaCitas.html">Lista De Citas</a></li>
+					<li><a href="citaAceptadas.html">Citas Asignadas</a></li>
+					<li><a href="citaCompleta.html">Citas Completadas</a></li>
+					<li><a href="#home">Perfil</a></li>
+					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
 			</div>
@@ -61,14 +60,30 @@
 <section id="home" style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">BIENVENIDO <br /> ENFERMERA <br /><br /><br/><i><img src="assets/img/icon.png"></i>
+			<h1 class="toptitle">MODIFICAR DATOS<br /> DE DOCTOR <br /><br /><br/><i><img
+				src="assets/img/icon.png"></i>
 			</h1>								
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
-						<center><h3>Bienvenido Administrador</h3></center><br>
-						<p>Usted puede realizar cambios que considera necesarios en los modulos de pacientes, doctores, enfermeras y Medicamentos.  Asi como visualizar los datos de cada modulo, puede acceder a ellos en la barra de opciones.</p>
-						<br><center><img src="assets/img/logo-dark.png"></center>
+						<h4>Nombre</h4>
+						<input type="text" id="nombre" placeholder="Nombre *">
+						<h4>Apellido</h4>
+						<input type="text" id="apellido" placeholder="Apellido *">
+						<h4>Sexo</h4>
+						<input type="text" id="sexo" placeholder="Sexo * -  Coloque M o F">
+						<h4>Fecha Nacimiento</h4>
+						<input type="text" id="fecha" placeholder="fecha *">
+						<h4>Telefono</h4>
+						<input type="text" id="telefono" placeholder="Telefono *">
+						<h4>Especialidad</h4>
+						<input type="text" id="especialidad" placeholder="especialidad *">
+						<h4>Usuario</h4>
+						<input type="text" id="usuario"  placeholder="usuario" disabled> 
+						<h4>Password</h4>
+						<input type="text" id="pass" placeholder="Password *">
+						<input type="submit" id="modificar" onclick="modificarDoc()"  class="clearfix btn" value="MODIFICAR DOCTOR">
+						<input type="submit" id="modificar" onclick="location.href='doctor.html'"  class="clearfix btn" value="REGRESAR A DOCTORES">
 					</div>
 				</form>
 				<div class="done">
@@ -81,7 +96,6 @@
 		</div>
 		</div>
 </section>
-
 
 <!-- THE END OF SECTIONS -->	
 	
@@ -117,6 +131,8 @@
 <script src="assets/js/plugins.js"></script>
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
+<script src="../js/dataLogin.js"></script>
+<script src="js/modificar.js"></script>
 
 </body>
 </html>

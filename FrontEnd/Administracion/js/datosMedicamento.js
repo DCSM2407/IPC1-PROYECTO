@@ -29,6 +29,7 @@ function modificarMed(){
         descripcion.value=''
         cantidad.value=''
          alert("Cambio Realizado")
+         window.location.href='medicamento.html'
       })
       .catch(error => {
         console.error('Error:', error);

@@ -50,6 +50,7 @@ function modifiarAdmin(){
         apellido.value=''
         pass.value=''
          alert("Cambio Realizado")
+         window.location.href='administracion.html'
       })
       .catch(error => {
         console.error('Error:', error);

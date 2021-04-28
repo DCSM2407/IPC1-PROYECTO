@@ -25,6 +25,9 @@ class manager:
         self.medicamentos.append(medicamento('Acetaminofen3',"12.50","Para dolor de Cabeza","10"))
         self.medicamentos.append(medicamento('Paracetamo4',"125.20","Para dolor de Cabeza","10"))
         self.medicamentos.append(medicamento('Acetaminofen4',"12.50","Para dolor de Cabeza","10"))
+        self.citas.append(cita("nat","2021-04-29","20:39","Cansancion","Pendiente","Ninguno"))
+        self.citas.append(cita("nat2","2021-04-15","15:39","Cansancion","Pendiente","Ninguno"))
+        
     def verificarUsuario(self,user,password):
         for x in self.usuarios:
             if x.usuario==user and x.password==password:
@@ -85,6 +88,7 @@ class manager:
     def ObtenerAdmin(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'admin'])
     
+    
     def ObtenerMedicamentos(self):
         return json.dumps([ob.__dict__ for ob in self.medicamentos])
     
@@ -93,9 +97,34 @@ class manager:
 
     def getPaciente(self,usuario):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.usuario == usuario and ob.tipo == 'paciente'])
+        
+    def getEnfermera(self,usuario):
+        return json.dumps([ob.__dict__ for ob in self.usuarios if ob.usuario == usuario and ob.tipo == 'enfermera'])
+
+    def getDatoNombre(self,usuario):
+        for i in self.usuarios:
+            if i.usuario == usuario:
+                return i
+
+    def getDoctor(self,usuario):
+        return json.dumps([ob.__dict__ for ob in self.usuarios if ob.usuario == usuario and ob.tipo == 'doctor'])
 
     def getCitas(self,paciente):
         return json.dumps([ob.__dict__ for ob in self.citas if ob.idpaciente == paciente ])
+
+    
+    def getCitasAsignadas(self,doctor):
+        return json.dumps([ob.__dict__ for ob in self.citas if ob.iddoctor == doctor and ob.estado == 'Aceptada' ])
+    
+    
+    def getCitasComplete(self,doctor):
+        return json.dumps([ob.__dict__ for ob in self.citas if ob.iddoctor == doctor and ob.estado == 'Completada' ])
+    
+    def getCitasList(self):
+        return json.dumps([ob.__dict__ for ob in self.citas if ob.estado == 'Pendiente' ])
+
+    def getCitasListAcept(self):
+        return json.dumps([ob.__dict__ for ob in self.citas if ob.estado == 'Aceptada' ])
 
     def RetornoAdmin(self):
         for i in self.usuarios:
@@ -168,5 +197,12 @@ class manager:
         for data in self.medicamentos:
             if (data.nombre == medical):
                 self.medicamentos[self.medicamentos.index(data)]=medicina
+                return True
+        return False
+    
+    def modificarCita(self,paciente,fecha,hora,cambio):
+        for data in self.citas:
+            if (data.idpaciente == paciente and data.fecha == fecha and data.hora == hora):
+                self.citas[self.citas.index(data)]=cambio
                 return True
         return False

@@ -42,6 +42,7 @@ headers.append('Accept', 'application/json');
       especialidad.value=''
       usuario.value=''
        alert("Cambio Realizado")
+       window.location.href='doctores.html'
     })
     .catch(error => {
       console.error('Error:', error);

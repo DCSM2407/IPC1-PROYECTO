@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Paciente | Modificacion</title>
+<title>Enfermera | Modificacion</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -38,9 +38,10 @@
 			<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
-					<li><a href="paciente.html">Inicio</a></li>
-					<li><a href="cita.html">Solicitar Cita</a></li>
-					<li><a href="comprar.html">Comprar Medicamento</a></li>
+					<li><a href="enfermera.html">Inicio</a></li>
+					<li><a href="listaCitas.html">Listado Citas</a></li>
+					<li><a href="citasAceptada.html">Citas Aceptadas</a></li>
+					<li><a href="facturas.html">Generar Facturas</a></li>
 					<li><a href="#home">Perfil</a></li>
 					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
@@ -59,21 +60,28 @@
 <section id="home" style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 	<div class="container">
 		<div class="textwidget">
-			<h1 class="toptitle">MODIFICAR DATOS DE <br /> PACIENTE <br /><br /><br/><i><img src="assets/img/icon.png"></i>
+			<h1 class="toptitle">MODIFICAR DATOS<br /> DE ENFERMERAS <br /><br /><br/><i><img
+				src="assets/img/icon.png"></i>
 			</h1>								
 			<div class="contactstyle topform">
 				<form method="post" action="contact/topcontact.php" id="topcontactform">
 					<div class="form">
+						<h4>Nombre</h4>
 						<input type="text" id="nombre" placeholder="Nombre *">
+						<h4>Apellido</h4>
 						<input type="text" id="apellido" placeholder="Apellido *">
-						<input type="date" id="fecha" placeholder="fecha *">
+						<h4>Sexo</h4>
 						<input type="text" id="sexo" placeholder="Sexo * -  Coloque M o F">
+						<h4>Fecha Nacimiento</h4>
+						<input type="text" id="fecha" placeholder="fecha *">
+						<h4>Telefono</h4>
 						<input type="text" id="telefono" placeholder="Telefono *">
-						<input type="text" id="usuario" placeholder="Usuario *" disabled>
-						<input type="text" id="pass" placeholder="Password *" minlength="8" required />
-						
-						<input type="submit" id="registro" onclick="modificarPac()"  class="clearfix btn" value="MODIFICAR PACIENTE">
-						<input type="submit" id="registro" onclick="location.href='paciente.html'" class="clearfix btn" value="REGRESAR AL INICIO">
+						<h4>Usuario</h4>
+						<input type="text" id="usuario"  placeholder="usuario" disabled> 
+						<h4>Password</h4>
+						<input type="text" id="pass" placeholder="Password *">
+						<input type="submit" id="modificar" onclick="modificarEnfer()"  class="clearfix btn" value="MODIFICAR ENFERMERAS">
+						<input type="submit" id="modificar" onclick="location.href='enfermera.html'"  class="clearfix btn" value="REGRESAR A ENFERMERAS">
 					</div>
 				</form>
 				<div class="done">
@@ -86,7 +94,6 @@
 		</div>
 		</div>
 </section>
-
 
 <!-- THE END OF SECTIONS -->	
 	

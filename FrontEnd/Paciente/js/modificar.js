@@ -38,6 +38,7 @@ function modificarPac(){
         telefono.value=''
         usuario.value=''
          alert("Cambio Realizado")
+         window.location.href='paciente.html'
       })
       .catch(error => {
         console.error('Error:', error);

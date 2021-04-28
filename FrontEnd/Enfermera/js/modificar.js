@@ -1,4 +1,5 @@
 
+
 // PARA MODIFICAR EL ENFERMERA EN EL CRU
 function modificarEnfer(){
     var usuario = document.getElementById("usuario");
@@ -39,37 +40,38 @@ function modificarEnfer(){
         fecha.value=''
         telefono.value=''
         usuario.value=''
-         alert("Cambio Realizado")
-         window.location.href='enfermeras.html'
+        alert("Cambio Realizado")
+        window.location.href='enfermera.html'
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
+
+
+//PARA VALIDAR LOS DATOS PARA INICIAR SESION
+function MostrarEnfer(){
+    var enfermera= sessionStorage.data
+    var usuario = document.getElementById("usuario");
+    var nombre = document.getElementById("nombre");
+    var apellido = document.getElementById("apellido");
+    var fecha = document.getElementById("fecha");
+    var sexo = document.getElementById("sexo");
+    var telefono = document.getElementById("telefono");
+    var pass = document.getElementById("pass")
+
+  fetch(`http://localhost:8000/mostrarEnfer/${enfermera}`)
+  .then(response => response.json())
+  .then(data =>{
+        pass.value= data.password;
+        usuario.value=data.usuario;
+        nombre.value = data.nombre;
+        apellido.value = data.apellido;
+        fecha.value = data.fecha;
+        sexo.value = data.sexo;
+        telefono.value=data.telefono;
   
-  //PARA VALIDAR LOS DATOS PARA INICIAR SESION
-  function MostrarEnfer(){
-      var enfermera= sessionStorage.dato1
-      var usuario = document.getElementById("usuario");
-      var nombre = document.getElementById("nombre");
-      var apellido = document.getElementById("apellido");
-      var fecha = document.getElementById("fecha");
-      var sexo = document.getElementById("sexo");
-      var telefono = document.getElementById("telefono");
-      var pass = document.getElementById("pass")
-  
-    fetch(`http://localhost:8000/mostrarEnfer/${enfermera}`)
-    .then(response => response.json())
-    .then(data =>{
-          pass.value= data.password;
-          usuario.value=data.usuario;
-          nombre.value = data.nombre;
-          apellido.value = data.apellido;
-          fecha.value = data.fecha;
-          sexo.value = data.sexo;
-          telefono.value=data.telefono;
-    
-    });
-  }
-  
-  MostrarEnfer()
+  });
+}
+
+MostrarEnfer()

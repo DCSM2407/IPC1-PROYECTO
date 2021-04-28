@@ -39,9 +39,10 @@
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
 					<li><a href="#home">Inicio</a></li>
-					<li><a href="pacientes.html">Solicitar Cita</a></li>
-					<li><a href="doctores.html">Comprar Medicamento</a></li>
-					<li><a href="medicamento.html">Perfil</a></li>
+					<li><a href="listaCitas.html">Lista De Citas</a></li>
+					<li><a href="citaAceptadas.html">Citas Asignadas</a></li>
+					<li><a href="citaCompleta.html">Citas Completadas</a></li>
+					<li><a href="modificarDoctores.html">Perfil</a></li>
 					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
@@ -80,6 +81,65 @@
 		</div>
 </section>
 
+
+<!-- MOSTRAR DATOS DEL ADMIN-->>
+<section id="services" class="services margintop60">
+	<div class="container">
+		<div class="sow-headline">
+			<h1>DATOS DEL DOCTOR</h1>
+			<div class="decoration">
+				<div class="decoration-inside">
+				</div>
+			</div>
+		</div>
+		<div>
+			<div id="tablausers" class="row">
+				<script>
+					let text2 = `<table class="table">
+							<thead>
+							<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Usuario</th>
+							<th scope="col">Sexo</th>
+							<th scope="col">Tipo Usuario</th>
+							</tr>
+						</thead>
+						<tbody>`;
+					var doct = sessionStorage.data
+					fetch(`http://localhost:8000/doctorM/${doct}`)
+						.then(response => response.json())
+						.then(data => {
+							var i;
+
+
+							for (i = 0; i < data.length; i++) {
+								text2 += `
+								<tr>
+								<th scope="row">${i + 1}</th>
+								<td>${data[i].nombre}</td>
+								<td>${data[i].apellido}</td>
+								<td>${data[i].usuario}</td>
+								<td>${data[i].sexo}</td>
+								<td>${data[i].tipo}</td>
+								</tr>
+								`
+								console.log(data[i].nombre, 'prueba')
+							}
+							text2 += `</tbody>
+							</table>`
+							document.getElementById("tablausers").innerHTML = text2;
+						});
+				</script>
+			</div>
+			<div>
+				<br>
+			</div>
+
+		</div>
+	</div>
+</section>
 
 <!-- THE END OF SECTIONS -->	
 	

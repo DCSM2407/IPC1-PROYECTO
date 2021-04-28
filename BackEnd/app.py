@@ -126,10 +126,48 @@ def admin():
 def pacienteM(pac):
     return Manager.getPaciente(pac)
 
+# PARA OBTENER DATOS DEL PACIENTE (EN LA SECCION DE PACIENTES)
+@app.route('/enfermeraM/<pac>')
+def enfermeraM(pac):
+    return Manager.getEnfermera(pac)
+
+# PARA OBTENER DATOS DEL PACIENTE (EN LA SECCION DE PACIENTES)
+@app.route('/doctorM/<pac>')
+def doctorM(pac):
+    return Manager.getDoctor(pac)
+
 # PARA OBTENER DATOS DE CITAS PARA EL LISTADO
 @app.route('/citas/<pac>')
 def getCitas(pac):
     return Manager.getCitas(pac)
+
+# PARA OBTENER DATOS DE CITAS PARA EL LISTADO
+@app.route('/citasAsignada/<doc>')
+def getCitasAsignadas(doc):
+    return Manager.getCitasAsignadas(doc)
+
+# PARA OBTENER DATOS PARA RECETA NOMBRE
+@app.route('/getDatoNombre/<paciente>')
+def getDatoNombre(paciente):
+    dato = Manager.getDatoNombre(paciente)
+    return jsonify({'name':dato.nombre,'last':dato.apellido})
+
+
+
+# PARA OBTENER DATOS DE CITAS PARA EL LISTADO
+@app.route('/citasComplete/<doc>')
+def getCitasComplete(doc):
+    return Manager.getCitasComplete(doc)
+    
+# PARA OBTENER DATOS DE CITAS PENDIENTES LISTADO ENFERMERA
+@app.route('/citas')
+def getCitasList():
+    return Manager.getCitasList()
+
+# PARA OBTENER DATOS DE CITAS ACEPTADAS LISTADO ENFERMERA
+@app.route('/citasA')
+def getCitasListAcept():
+    return Manager.getCitasListAcept()
 
 # PARA MOSTRAR DATOS ADMIN EN MODIFICAR
 @app.route('/mostrarAdmin')
@@ -226,6 +264,22 @@ def modificarMed(med):
         return '{"Estado":"Doctor Modificado"}'
     return '{"Estado":"Error"}'
 
+@app.route('/modificarCita/<paciente>/<fecha>/<hora>', methods=["PUT"])
+def modificarCita(paciente,fecha,hora):
+    dato = request.json
+    cambio = cita(dato['idpaciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'],dato['iddoctor'])
+    if (Manager.modificarCita(paciente,fecha,hora,cambio)):
+        return '{"Estado":"Cita Rechazada"}'
+    return '{"Estado":"Error"}'
+
+
+@app.route('/modificarCita/<paciente>/<fecha>/<hora>', methods=["PUT"])
+def CitaAceptada(paciente,fecha,hora):
+    dato = request.json
+    cambio = cita(dato['idpaciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'],dato['iddoctor'])
+    if (Manager.modificarCita(paciente,fecha,hora,cambio)):
+        return '{"Estado":"Cita Aceptada"}'
+    return '{"Estado":"Error"}'
 # EJECUTA LA API :3
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

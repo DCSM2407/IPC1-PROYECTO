@@ -13,12 +13,12 @@ function Login() {
         window.location.href = 'Administracion/Administracion.html'
       }
       else if (data.data == 'doctor') {
-        sessionStorage.setItem("data",usuario)
+        sessionStorage.setItem("data",usuario.value)
         window.location.href = 'Doctor/doctor.html'
       }
       else if (data.data == 'enfermera') {
-        sessionStorage.setItem("data",usuario)
-        window.location.href = 'Enfermera/enfemera.html'
+        sessionStorage.setItem("data",usuario.value)
+        window.location.href = 'Enfermera/enfermera.html'
       }
       else if (data.data == 'paciente') {
         sessionStorage.setItem("data",usuario.value)
