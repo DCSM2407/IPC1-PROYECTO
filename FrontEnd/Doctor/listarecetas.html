@@ -90,7 +90,7 @@
                             </thead>
                             <tbody>`;
 					var doc= sessionStorage.data
-                    fetch(`http://localhost:8000/recetasC/${doc}`)
+                    fetch(`http://uhospitalproyectoback.herokuapp.com/recetasC/${doc}`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;

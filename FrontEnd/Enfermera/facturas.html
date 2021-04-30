@@ -97,7 +97,7 @@
 							<script>
 								let text2 = `<select id="doctor">`;
 								var enfermera = sessionStorage.data
-								fetch('http://localhost:8000/doctores')
+								fetch('http://uhospitalproyectoback.herokuapp.com/doctores')
 									.then(response => response.json())
 									.then(data => {
 										var i;

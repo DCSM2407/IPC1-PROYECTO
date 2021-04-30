@@ -16,7 +16,7 @@ function modificarMed(){
             "cantidad":"${cantidad.value}"
       }`
       console.log(requests)
-      fetch('http://localhost:8000/modificarMed/'+nombre.value, {
+      fetch('http://uhospitalproyectoback.herokuapp.com/modificarMed/'+nombre.value, {
         method: 'PUT',
         headers,
         body: requests,
@@ -44,7 +44,7 @@ function modificarMed(){
       var descripcion = document.getElementById("descripcion");
       var cantidad = document.getElementById("cantidad")
   
-    fetch(`http://localhost:8000/mostrarMed/${medical}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/mostrarMed/${medical}`)
     .then(response => response.json())
     .then(data =>{
           nombre.value = data.nombre;

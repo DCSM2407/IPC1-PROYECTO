@@ -13,7 +13,7 @@ function rechazo(motivo, fecha, hora, idpaciente) {
     "iddoctor":"Ninguno"
 }`
     console.log(requests)
-    fetch(`http://localhost:8000/modificarCita/${idpaciente}/${fecha}/${hora}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/modificarCita/${idpaciente}/${fecha}/${hora}`, {
         method: 'PUT',
         headers,
         body: requests,
@@ -45,7 +45,7 @@ function completitar(motivo, fecha, hora, idpaciente) {
     "iddoctor":"${dato1}"
 }`
     console.log(requests)
-    fetch(`http://localhost:8000/modificarCita/${idpaciente}/${fecha}/${hora}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/modificarCita/${idpaciente}/${fecha}/${hora}`, {
         method: 'PUT',
         headers,
         body: requests,
@@ -76,7 +76,7 @@ function Asignacion(motivo, fecha, hora, idpaciente) {
     "iddoctor":"${dato1}"
 }`
     console.log(requests)
-    fetch(`http://localhost:8000/modificarCita/${idpaciente}/${fecha}/${hora}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/modificarCita/${idpaciente}/${fecha}/${hora}`, {
         method: 'PUT',
         headers,
         body: requests,
@@ -109,7 +109,7 @@ function actualizarC() {
                             </thead>
                             <tbody>`;
     var enfermera = sessionStorage.data
-    fetch(`http://localhost:8000/citas`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/citas`)
         .then(response => response.json())
         .then(data => {
             var i;
@@ -152,7 +152,7 @@ function actualizarCitAsignada() {
                             </thead>
                             <tbody>`;
     var dato = sessionStorage.data
-    fetch(`http://localhost:8000/citasAsignada/${dato}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/citasAsignada/${dato}`)
         .then(response => response.json())
         .then(data => {
             var i;
@@ -194,7 +194,7 @@ function actualizarCompleta() {
                             </thead>
                             <tbody>`;
     var dato = sessionStorage.data
-    fetch(`http://localhost:8000/citasComplete/${dato}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/citasComplete/${dato}`)
         .then(response => response.json())
         .then(data => {
             var i;
@@ -235,7 +235,7 @@ function datosReceta() {
     var docto = sessionStorage.data2
     var da = document.getElementById("nombre").value
 
-    fetch(`http://localhost:8000/getDatoNombre/${pacient}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/getDatoNombre/${pacient}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById("nombre").value = data.name + " " + data.last
@@ -258,7 +258,7 @@ function RegistroReceta() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    fetch('http://localhost:8000/receta', {
+    fetch('http://uhospitalproyectoback.herokuapp.com/receta', {
         method: 'POST',
         headers,
         body: `{
@@ -284,7 +284,7 @@ function RegistroReceta() {
 
 //PARA ELIMINAR RECETA
 function eliminarReceta(paciente, padecimiento, fecha, doctor) {
-    fetch(`http://localhost:8000/citaDelete/${paciente}/${padecimiento}/${fecha}/${doctor}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/citaDelete/${paciente}/${padecimiento}/${fecha}/${doctor}`, {
         method: 'DELETE',
     })
         .then(res => res.text()) // or res.json()
@@ -328,7 +328,7 @@ function actualizarReceta() {
                             </thead>
                             <tbody>`;
     var doc = sessionStorage.data
-    fetch(`http://localhost:8000/recetasC/${doc}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/recetasC/${doc}`)
         .then(response => response.json())
         .then(data => {
             var i;

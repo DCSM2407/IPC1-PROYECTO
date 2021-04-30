@@ -9,7 +9,7 @@ function Registro(){
     let headers = new Headers();
 	headers.append('Content-Type', 'application/json');
 	headers.append('Accept', 'application/json');
-    fetch('http://localhost:8000/registrar', {
+    fetch('http://uhospitalproyectoback.herokuapp.com/registrar', {
         method: 'POST',
         headers,
         body: `{

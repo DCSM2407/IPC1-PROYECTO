@@ -29,7 +29,7 @@ function PruebaDoc(results) {
 			let headers = new Headers();
 			headers.append('Content-Type', 'application/json');
 			headers.append('Accept', 'application/json');
-			fetch('http://localhost:8000/masivaDoc', {
+			fetch('http://uhospitalproyectoback.herokuapp.com/masivaDoc', {
 				method: 'POST',
 				headers,
 				body: `{

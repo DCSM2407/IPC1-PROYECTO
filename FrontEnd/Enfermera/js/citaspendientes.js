@@ -13,7 +13,7 @@ function rechazo(motivo, fecha, hora, idpaciente) {
     "iddoctor":"Ninguno"
 }`
     console.log(requests)
-    fetch(`http://localhost:8000/modificarCita/${idpaciente}/${fecha}/${hora}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/modificarCita/${idpaciente}/${fecha}/${hora}`, {
         method: 'PUT',
         headers,
         body: requests,
@@ -48,7 +48,7 @@ function Asignar() {
     "iddoctor":"${doc}"
 }`
     console.log(requests)
-    fetch(`http://localhost:8000/modificarCita/${idP}/${fec}/${hor}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/modificarCita/${idP}/${fec}/${hor}`, {
         method: 'PUT',
         headers,
         body: requests,

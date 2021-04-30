@@ -10,7 +10,7 @@ function RegistroFac(){
     let headers = new Headers();
 	headers.append('Content-Type', 'application/json');
 	headers.append('Accept', 'application/json');
-    fetch('http://localhost:8000/registrarFactura', {
+    fetch('http://uhospitalproyectoback.herokuapp.com/registrarFactura', {
         method: 'POST',
         headers,
         body: `{

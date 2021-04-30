@@ -3,7 +3,7 @@
 function Recuperar() {
     var usuario = document.getElementById("user");
   
-    fetch(`http://localhost:8000/recuperar/${usuario.value}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/recuperar/${usuario.value}`)
       .then(response => response.json())
       .then(data => {
           console.log(data.estado)

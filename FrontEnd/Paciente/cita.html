@@ -112,7 +112,7 @@
                             </thead>
                             <tbody>`;
 								var paciente= sessionStorage.data
-                    fetch(`http://localhost:8000/citas/${paciente}`)
+                    fetch(`http://uhospitalproyectoback.herokuapp.com/citas/${paciente}`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;

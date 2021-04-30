@@ -85,7 +85,7 @@
                             </thead>
                             <tbody>`;
 					var enfermera= sessionStorage.data
-                    fetch(`http://localhost:8000/getFactura`)
+                    fetch(`http://uhospitalproyectoback.herokuapp.com/getFactura`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;

@@ -15,7 +15,7 @@ Manager = manager()
 
 @app.route('/')
 def home():
-    return 'ARRANQUE SERVER'
+    return 'PROYECTO2 - DILAN SUY/201801194'
 
 #INICIO DE SESION 
 @app.route('/sesion/<user>/<password>')

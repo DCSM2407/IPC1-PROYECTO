@@ -9,7 +9,7 @@ function crearCita(){
     let headers = new Headers();
 	headers.append('Content-Type', 'application/json');
 	headers.append('Accept', 'application/json');
-    fetch('http://localhost:8000/crearCita', {
+    fetch('http://uhospitalproyectoback.herokuapp.com/crearCita', {
         method: 'POST',
         headers,
         body: `{
@@ -54,7 +54,7 @@ function actualizarCita(){
                                 </tr>
                             </thead>
                             <tbody>`;
-                    fetch(`http://localhost:8000/citas/${paciente}`)
+                    fetch(`http://uhospitalproyectoback.herokuapp.com/citas/${paciente}`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;

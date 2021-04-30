@@ -5,7 +5,7 @@ function Mostrar(){
     var apellido = document.getElementById("apellido");
     var pass = document.getElementById("pass")
 
-  fetch(`http://localhost:8000/mostrarAdmin`)
+  fetch(`http://uhospitalproyectoback.herokuapp.com/mostrarAdmin`)
   .then(response => response.json())
   .then(data =>{
       nombre.value=data.nombre;
@@ -38,7 +38,7 @@ function modifiarAdmin(){
             "tipo":"admin"
       }`
       console.log(requests)
-      fetch('http://localhost:8000/modificarAdmin/'+usuario.value, {
+      fetch('http://uhospitalproyectoback.herokuapp.com/modificarAdmin/'+usuario.value, {
         method: 'PUT',
         headers,
         body: requests,

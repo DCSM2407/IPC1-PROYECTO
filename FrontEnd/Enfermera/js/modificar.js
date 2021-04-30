@@ -25,7 +25,7 @@ function modificarEnfer(){
             "tipo":"enfermera"
       }`
       console.log(requests)
-      fetch('http://localhost:8000/modificarEnfer/'+usuario.value, {
+      fetch('http://uhospitalproyectoback.herokuapp.com/modificarEnfer/'+usuario.value, {
         method: 'PUT',
         headers,
         body: requests,
@@ -60,7 +60,7 @@ function MostrarEnfer(){
     var telefono = document.getElementById("telefono");
     var pass = document.getElementById("pass")
 
-  fetch(`http://localhost:8000/mostrarEnfer/${enfermera}`)
+  fetch(`http://uhospitalproyectoback.herokuapp.com/mostrarEnfer/${enfermera}`)
   .then(response => response.json())
   .then(data =>{
         pass.value= data.password;

@@ -1,7 +1,7 @@
 
 //FUNCION PARA ELIMINAR DOCTORES
 function eliminarDoctor(usuario){
-    fetch('http://localhost:8000/user/'+usuario, {
+    fetch('http://uhospitalproyectoback.herokuapp.com/user/'+usuario, {
         method: 'DELETE',
       })
       .then(res => res.text()) // or res.json()
@@ -13,7 +13,7 @@ function eliminarDoctor(usuario){
 
 //FUNCION PARA ELIMINAR ENFERMERAS
 function eliminarEnfermera(usuario){
-    fetch('http://localhost:8000/user/'+usuario, {
+    fetch('http://uhospitalproyectoback.herokuapp.com/user/'+usuario, {
         method: 'DELETE',
       })
       .then(res => res.text()) // or res.json()
@@ -25,7 +25,7 @@ function eliminarEnfermera(usuario){
 
 //FUNCION PARA ELIMINAR ENFERMERAS
 function eliminarPaciente(usuario){
-    fetch('http://localhost:8000/user/'+usuario, {
+    fetch('http://uhospitalproyectoback.herokuapp.com/user/'+usuario, {
         method: 'DELETE',
       })
       .then(res => res.text()) // or res.json()
@@ -37,7 +37,7 @@ function eliminarPaciente(usuario){
 
 //FUNCION PARA ELIMINAR MEDICAMENTOS
 function eliminarMedicamento(medicamento){
-    fetch('http://localhost:8000/medicamento/'+medicamento, {
+    fetch('http://uhospitalproyectoback.herokuapp.com/medicamento/'+medicamento, {
         method: 'DELETE',
       })
       .then(res => res.text()) // or res.json()
@@ -64,7 +64,7 @@ function ActualizarDoctor(){
                                 </tr>
                             </thead>
                             <tbody>`;
-                    fetch('http://localhost:8000/doctores')
+                    fetch('http://uhospitalproyectoback.herokuapp.com/doctores')
                     .then(response => response.json())
                     .then(data =>{
                         var i;
@@ -109,7 +109,7 @@ function ActualizarEnfermera(){
                                 </tr>
                             </thead>
                             <tbody>`;
-                    fetch('http://localhost:8000/enfermeras')
+                    fetch('http://uhospitalproyectoback.herokuapp.com/enfermeras')
                     .then(response => response.json())
                     .then(data =>{
                         var i;
@@ -151,7 +151,7 @@ function ActualizarMedicamento(){
                                 </tr>
                             </thead>
                             <tbody>`;
-                    fetch('http://localhost:8000/medicamento')
+                    fetch('http://uhospitalproyectoback.herokuapp.com/medicamento')
                     .then(response => response.json())
                     .then(data =>{
                         var i;
@@ -193,7 +193,7 @@ function ActualizarPaciente(){
                                 </tr>
                             </thead>
                             <tbody>`;
-                    fetch('http://localhost:8000/pacientes')
+                    fetch('http://uhospitalproyectoback.herokuapp.com/pacientes')
                     .then(response => response.json())
                     .then(data =>{
                         var i;

@@ -4,13 +4,13 @@ function Login() {
   var usuario = document.getElementById("user");
   var pass = document.getElementById("pass");
 
-  fetch(`http://localhost:8000/sesion/${usuario.value}/${pass.value}`)
+  fetch(`http://uhospitalproyectoback.herokuapp.com/sesion/${usuario.value}/${pass.value}`)
     .then(response => response.json())
     .then(data => {
       console.log(data.data)
       if (data.data == 'admin') {
         sessionStorage.setItem("data", usuario.value)
-        window.location.href = 'Administracion/Administracion.html'
+        window.location.href = 'Administracion/administracion.html'
       }
       else if (data.data == 'doctor') {
         sessionStorage.setItem("data",usuario.value)

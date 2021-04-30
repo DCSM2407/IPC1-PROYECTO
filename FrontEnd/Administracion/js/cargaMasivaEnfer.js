@@ -29,7 +29,7 @@ function PruebaEnfer(results) {
 			let headers = new Headers();
 			headers.append('Content-Type', 'application/json');
 			headers.append('Accept', 'application/json');
-			fetch('http://localhost:8000/masivaenfer', {
+			fetch('http://uhospitalproyectoback.herokuapp.com/masivaenfer', {
 				method: 'POST',
 				headers,
 				body: `{

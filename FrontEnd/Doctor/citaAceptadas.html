@@ -90,7 +90,7 @@
                             </thead>
                             <tbody>`;
 					var dato= sessionStorage.data
-                    fetch(`http://localhost:8000/citasAsignada/${dato}`)
+                    fetch(`http://uhospitalproyectoback.herokuapp.com/citasAsignada/${dato}`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;

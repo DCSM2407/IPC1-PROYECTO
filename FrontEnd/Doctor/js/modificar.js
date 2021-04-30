@@ -24,7 +24,7 @@ function modificarDoc(){
             "tipo":"doctor"
       }`
       console.log(requests)
-      fetch('http://localhost:8000/modificardoc/'+usuario.value, {
+      fetch('http://uhospitalproyectoback.herokuapp.com/modificardoc/'+usuario.value, {
         method: 'PUT',
         headers,
         body: requests,
@@ -60,7 +60,7 @@ function modificarDoc(){
       var especialidad = document.getElementById("especialidad");
       var pass = document.getElementById("pass")
   
-    fetch(`http://localhost:8000/mostarDoc/${dato1}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/mostarDoc/${dato1}`)
     .then(response => response.json())
     .then(data =>{
           pass.value= data.password;

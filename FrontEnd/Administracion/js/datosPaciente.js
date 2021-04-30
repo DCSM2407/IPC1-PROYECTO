@@ -24,7 +24,7 @@ function modificarPac(){
             "tipo":"paciente"
       }`
       console.log(requests)
-      fetch('http://localhost:8000/modificarPac/'+usuario.value, {
+      fetch('http://uhospitalproyectoback.herokuapp.com/modificarPac/'+usuario.value, {
         method: 'PUT',
         headers,
         body: requests,
@@ -58,7 +58,7 @@ function modificarPac(){
       var telefono = document.getElementById("telefono");
       var pass = document.getElementById("pass")
   
-    fetch(`http://localhost:8000/mostrarPac/${enfermera}`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/mostrarPac/${enfermera}`)
     .then(response => response.json())
     .then(data =>{
           pass.value= data.password;

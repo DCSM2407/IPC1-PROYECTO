@@ -9,7 +9,7 @@
     var descripcion = document.getElementById("descripcion");
     var padecimiento = document.getElementById("padecimiento")
 
-  fetch(`http://localhost:8000/mostrarRecetaC/${idpac}/${fech}/${iddoc}/${pade}`)
+  fetch(`http://uhospitalproyectoback.herokuapp.com/mostrarRecetaC/${idpac}/${fech}/${iddoc}/${pade}`)
   .then(response => response.json())
   .then(data =>{
         nombre.value = data.nombre;
@@ -46,7 +46,7 @@ headers.append('Accept', 'application/json');
           "iddoctor":"${iddoc}"
     }`
     console.log(requests)
-    fetch(`http://localhost:8000/modificarReceta/${idpac}/${fech}/${iddoc}/${pade}`, {
+    fetch(`http://uhospitalproyectoback.herokuapp.com/modificarReceta/${idpac}/${fech}/${iddoc}/${pade}`, {
       method: 'PUT',
       headers,
       body: requests,
