@@ -41,7 +41,7 @@ function modificarDoc(){
         especialidad.value=''
         usuario.value=''
          alert("Cambio Realizado")
-         window.location.href='doctores.html'
+         window.location.href='doctor.html'
       })
       .catch(error => {
         console.error('Error:', error);

@@ -2,7 +2,7 @@
 <html lang="en-US" class="no-js">
 
 <head>
-	<title>Enfermera | Inicio</title>
+	<title>UHospital | Recuperacion Password</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all' />
@@ -43,13 +43,9 @@
 						<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
 						<div class="menu-top-menu-container">
 							<ul id="menu-top-menu" class="nav navbar-nav nav-list">
-								<li><a href="#home">Inicio</a></li>
-								<li><a href="listaCitas.html">Citas</a></li>
-								<li><a href="citasAceptada.html">Cita Aceptada</a></li>
-								<li><a href="facturas.html">Generar Factura</a></li>
-								<li><a href="listaFactura.html">Facturas</a></li>
-								<li><a href="modificarEnfermera.html">Perfil</a></li>
-								<li><a href="../index.html">Salir</a></li>
+								<li><a href="index.html">Login</a></li>
+								<li><a href="#home">Recuperacion Password</a></li>
+								<li><a href="registro.html">Registro</a></li>
 								<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 							</ul>
 						</div>
@@ -64,23 +60,18 @@
 	<!-- INTRO
 ================================================== -->
 	<section id="home"
-		style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
+		style="padding:168px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
 		<div class="container">
 			<div class="textwidget">
-				<h1 class="toptitle">BIENVENIDO <br /> ENFERMERA <br /><br /><br /><i><img
+				<h1 class="toptitle"> RECUPERACION DE<br /> PASSWORD <br /><br /><br /><i><img
 							src="assets/img/icon.png"></i>
 				</h1>
 				<div class="contactstyle topform">
 					<form method="post" action="contact/topcontact.php" id="topcontactform">
 						<div class="form">
-							<center>
-								<h3>Bienvenido Enfermera</h3>
-							</center><br>
-							<p>Usted puede realizar cambios en las citas, como aceptarlas y asignarle un doctor asi como rechazar la cita, si usted asi lo considera, generar facturasa 
-								a nuestros pacientes para la compra de medicamentos.
-							</p>
-							<br>
-							<center><img src="assets/img/logo-dark.png"></center>
+							<input type="text" id="user" placeholder="Usuario *">
+							<input type="submit" id="iniciar" onclick="Recuperar()" class="clearfix btn" value="RECUPERAR PASSWORD">
+							<input type="submit" id="registrar" onclick="location.href='registro.html'" class="clearfix btn" value="REGRESAR AL LOGIN">
 						</div>
 					</form>
 					<div class="done">
@@ -94,67 +85,7 @@
 		</div>
 	</section>
 
-
-	<!-- MOSTRAR DATOS DEL ADMIN-->>
-	<!-- MOSTRAR DATOS DEL ADMIN-->>
-	<section id="services" class="services margintop60">
-		<div class="container">
-			<div class="sow-headline">
-				<h1>DATOS DE LA ENFERMERA</h1>
-				<div class="decoration">
-					<div class="decoration-inside">
-					</div>
-				</div>
-			</div>
-			<div>
-				<div id="tablausers" class="row">
-					<script>
-						let text2 = `<table class="table">
-                                <thead>
-                                <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Usuario</th>
-                                <th scope="col">Sexo</th>
-                                <th scope="col">Tipo Usuario</th>
-                                </tr>
-                            </thead>
-                            <tbody>`;
-						var enfermera = sessionStorage.data
-						fetch(`http://localhost:8000/enfermeraM/${enfermera}`)
-							.then(response => response.json())
-							.then(data => {
-								var i;
-
-
-								for (i = 0; i < data.length; i++) {
-									text2 += `
-                                    <tr>
-                                    <th scope="row">${i + 1}</th>
-                                    <td>${data[i].nombre}</td>
-                                    <td>${data[i].apellido}</td>
-                                    <td>${data[i].usuario}</td>
-                                    <td>${data[i].sexo}</td>
-                                    <td>${data[i].tipo}</td>
-                                    </tr>
-                                    `
-									console.log(data[i].nombre, 'prueba')
-								}
-								text2 += `</tbody>
-                                </table>`
-								document.getElementById("tablausers").innerHTML = text2;
-							});
-					</script>
-				</div>
-				<div>
-					<br>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
+	
 	<!-- THE END OF SECTIONS -->
 
 	<!-- FOOTER
@@ -189,6 +120,7 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="contact/topvalidate.js"></script>
 	<script src="contact/bottomvalidate.js"></script>
+	<script src="js/datarecuperar.js"></script>
 
 </body>
 

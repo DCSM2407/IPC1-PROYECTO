@@ -35,6 +35,7 @@ function Registro(){
         sexo.value=''
         telefono.value=''
         alert(result.estado)
+        window.location.href = 'index.html'
       })
       .catch(error => {
         console.error('Error:', error);

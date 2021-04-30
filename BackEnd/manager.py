@@ -2,6 +2,8 @@
 from usuario import usuario
 from medicamento import medicamento
 from cita import cita
+from receta import receta
+from factura import factura
 import json     
 
 class manager:
@@ -9,28 +11,25 @@ class manager:
         self.usuarios =[]
         self.medicamentos =[]
         self.citas=[]
+        self.recetas=[]
+        self.facturas=[]
 
         self.usuarios.append(usuario('Carlos','Campaneros','admin',"1234",'24/07/1998','M','12345678','ninguna','admin'))
         self.usuarios.append(usuario('Dilan','Suy','dilan',"suy",'24/07/1998','M','12345678','oftamologo','doctor'))
-        self.usuarios.append(usuario('Conaher','Miranda','conaher',"suy",'24/07/1998','M','12345678','oftamologo','doctor'))
         self.usuarios.append(usuario('Cinthia','Lopez','yess',"suy",'24/07/1998','F','12345678','oftamologo','enfermera'))
-        self.usuarios.append(usuario('Yesenia','Lopez','yess2',"suy",'24/07/1998','F','12345678','oftamologo','enfermera'))
         self.usuarios.append(usuario('Nataly','Guzman','nat',"123",'24/07/1998','F','12345678','oftamologo','paciente'))
-        self.usuarios.append(usuario('Sarai','Guzman','nat2',"123",'24/07/1998','F','12345678','oftamologo','paciente'))
-        self.medicamentos.append(medicamento('Paracetamol1',"125.20","Para dolor de Cabeza","20"))
-        self.medicamentos.append(medicamento('Acetaminofen1',"12.50","Para dolor de Cabeza","10"))
-        self.medicamentos.append(medicamento('Paracetamol2',"125.20","Para dolor de Cabeza","20"))
-        self.medicamentos.append(medicamento('Acetaminofen2',"12.50","Para dolor de Cabeza","10"))
-        self.medicamentos.append(medicamento('Paracetamol3',"125.20","Para dolor de Cabeza","20"))
-        self.medicamentos.append(medicamento('Acetaminofen3',"12.50","Para dolor de Cabeza","10"))
-        self.medicamentos.append(medicamento('Paracetamo4',"125.20","Para dolor de Cabeza","10"))
-        self.medicamentos.append(medicamento('Acetaminofen4',"12.50","Para dolor de Cabeza","10"))
+        self.medicamentos.append(medicamento('Paracetamol',"125.20","Para dolor de Cabeza","20"))
         self.citas.append(cita("nat","2021-04-29","20:39","Cansancion","Pendiente","Ninguno"))
-        self.citas.append(cita("nat2","2021-04-15","15:39","Cansancion","Pendiente","Ninguno"))
         
     def verificarUsuario(self,user,password):
         for x in self.usuarios:
             if x.usuario==user and x.password==password:
+                return x
+        return None
+
+    def recuperar(self,user):
+        for x in self.usuarios:
+            if x.usuario == user:
                 return x
         return None
 
@@ -42,6 +41,14 @@ class manager:
             self.usuarios.append(user)
             return True
     
+    def registrarReceta(self, receta):
+        self.recetas.append(receta)
+        return True
+
+    def registrarFactura(self, fact):
+        self.facturas.append(fact)
+        return True
+
     def RegistrarCita(self, cita):
         validar = self.ExisteCita(cita)
         if validar==True:
@@ -112,6 +119,11 @@ class manager:
     def getCitas(self,paciente):
         return json.dumps([ob.__dict__ for ob in self.citas if ob.idpaciente == paciente ])
 
+    def getFactura(self):
+        return json.dumps([ob.__dict__ for ob in self.facturas])
+    
+    def getRecetaDoc(self,doc):
+        return json.dumps([ob.__dict__ for ob in self.recetas if ob.iddoctor ==doc ])
     
     def getCitasAsignadas(self,doctor):
         return json.dumps([ob.__dict__ for ob in self.citas if ob.iddoctor == doctor and ob.estado == 'Aceptada' ])
@@ -150,6 +162,18 @@ class manager:
         for i in self.medicamentos:
             if i.nombre == medical:
                 return i
+
+    def eliminarReceta(self,paciente,padecimiento,fecha,doctor):
+        for dato in self.recetas:
+            if(dato.idpaciente==paciente and dato.padecimiento == padecimiento and dato.fecha == fecha, dato.iddoctor == doctor ):
+                self.recetas.remove(dato)
+                return True
+        return False
+
+    def getReceta(self,paciente,fecha,doctor,padecimiento):
+        for dato in self.recetas:
+            if(dato.idpaciente==paciente and dato.fecha==fecha and dato.iddoctor == doctor and dato.padecimiento == padecimiento):
+                return dato
 
     def eliminarUsuario(self,user):
         for dato in self.usuarios:
@@ -204,5 +228,12 @@ class manager:
         for data in self.citas:
             if (data.idpaciente == paciente and data.fecha == fecha and data.hora == hora):
                 self.citas[self.citas.index(data)]=cambio
+                return True
+        return False
+    
+    def modificarReceta(self,paciente,fecha,doc,padecimiento,cambio):
+        for data in self.recetas:
+            if (data.idpaciente == paciente and data.fecha == fecha and data.iddoctor == doc and data.padecimiento ==padecimiento):
+                self.recetas[self.recetas.index(data)]=cambio
                 return True
         return False

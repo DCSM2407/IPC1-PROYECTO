@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Doctor | Citas Completadas</title>
+<title>Doctor | Lista Citas</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -40,9 +40,9 @@
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
 					<li><a href="doctor.html">Inicio</a></li>
 					<li><a href="listaCitas.html">Citas</a></li>
-					<li><a href="#home">Cita Asignada</a></li>
+					<li><a href="citaAceptadas.html">Cita Asignada</a></li>
 					<li><a href="citaCompleta.html">Cita Completada</a></li>
-					<li><a href="listarecetas.html">Recetas</a></li>
+					<li><a href="#home">Recetas</a></li>
 					<li><a href="modificarDoctores.html">Perfil</a></li>
 					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
@@ -67,7 +67,8 @@
 <section id="services" class="services margintop60" >
 	<div class="container">
 		<div class="sow-headline">
-			<h1>LISTA DE CITAS ASIGNADAS</h1>
+			<img src="assets/img/logo-dark.png">
+			<h1>LISTA DE RECETAS CREADAS POR DOCTOR</h1>
 			<div class="decoration">
 				<div class="decoration-inside">
 				</div>
@@ -81,16 +82,15 @@
                                 <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Motivo</th>
-                                <th scope="col">Id Paciente</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Opciones</th>
+                                <th scope="col">Paciente</th>
+                                <th scope="col">Padecimiento</th>
+                                <th scope="col">ID Doctor</th>
+                                <th scope="col">opciones</th>
                                 </tr>
                             </thead>
                             <tbody>`;
-					var dato= sessionStorage.data
-                    fetch(`http://localhost:8000/citasAsignada/${dato}`)
+					var doc= sessionStorage.data
+                    fetch(`http://localhost:8000/recetasC/${doc}`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;
@@ -101,12 +101,13 @@
                                     <tr>
                                     <th scope="row">${i+1}</th>
                                     <td>${data[i].fecha}</td>
-                                    <td>${data[i].hora}</td>
-                                    <td>${data[i].motivo}</td>
-                                    <td>${data[i].idpaciente}</td>
-                                    <td>${data[i].estado}</td>
-                                    <td><button onclick=" completitar('${data[i].motivo}','${data[i].fecha}','${data[i].hora}','${data[i].idpaciente}')" style="background-color:rgb(218,165,32); color:white" ><h4><i class="fa fa-check-circle-o"  style="color:white"> </i></h4>&nbsp;Completar Cita&nbsp;</button>
-									</tr>
+                                    <td>${data[i].paciente}</td>
+                                    <td>${data[i].padecimiento}</td>
+                                    <td>${data[i].iddoctor}</td>
+									<td><button onclick="abrirReceta('${data[i].idpaciente}','${data[i].padecimiento}','${data[i].fecha}','${data[i].iddoctor}')"   style="background-color:green"><h4><i class="fa fa-eye"  style="color:white"></i></h4></button>
+										<button onclick="abrirRecetaMOD('${data[i].idpaciente}','${data[i].padecimiento}','${data[i].fecha}','${data[i].iddoctor}')"   style="background-color:blue"><h4><i class="fa fa-pencil"  style="color:white"></i></h4></button>
+										<button onclick=" eliminarReceta('${data[i].idpaciente}','${data[i].padecimiento}','${data[i].fecha}','${data[i].iddoctor}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
+                                    </tr>
                                     `
                             console.log(data[i].nombre,'prueba')
                         }
@@ -126,6 +127,10 @@
 	</div>
 </section>
 <!-- THE END OF SECTIONS -->	
+<div>
+	<br>
+	<CENTER><button id="reporte1" style="background-color:red; color: white;" ><h4><i class="fa fa-file-pdf-o"  style="color:white"></i></h4>GENERAR REPORTE</button></CENTER><BR><BR>
+</div>
 	<section>
 		<div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 	</section>
@@ -163,6 +168,9 @@
 <script src="contact/bottomvalidate.js"></script>
 <script src="../js/dataLogin.js"></script>
 <script src="js/citaspendientes.js"></script>
+<script src="js/html2pdf.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/reporteRecetLis.js"></script>
 
 </body>
 </html>

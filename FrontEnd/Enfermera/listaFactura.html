@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-<title>Doctor | Citas Completadas</title>
+<title>Enfermera | Lista Facturas</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
@@ -38,12 +38,12 @@
 			<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
 			<div class="menu-top-menu-container">
 				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
-					<li><a href="doctor.html">Inicio</a></li>
+					<li><a href="enfermera.html">Inicio</a></li>
 					<li><a href="listaCitas.html">Citas</a></li>
-					<li><a href="#home">Cita Asignada</a></li>
-					<li><a href="citaCompleta.html">Cita Completada</a></li>
-					<li><a href="listarecetas.html">Recetas</a></li>
-					<li><a href="modificarDoctores.html">Perfil</a></li>
+					<li><a href="citasAceptada.html">Cita Aceptada</a></li>
+					<li><a href="facturas.html">Generar Factura</a></li>
+					<li><a href="#home">Facturas</a></li>
+					<li><a href="modificarEnfermera.html">Perfil</a></li>
 					<li><a href="../index.html">Salir</a></li>
 					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
 				</ul>
@@ -56,18 +56,14 @@
 </div>
 </header>	
 
-<!-- INTRO
-================================================== -->
-
-
-
 
 
 <!-- MOSTRAR DATOS DEL CITAS PENDIENTES-->>
 <section id="services" class="services margintop60" >
 	<div class="container">
 		<div class="sow-headline">
-			<h1>LISTA DE CITAS ASIGNADAS</h1>
+			<img src="assets/img/logo-dark.png">
+			<h1>LISTA DE FACTURAS GENERADAS</h1>
 			<div class="decoration">
 				<div class="decoration-inside">
 				</div>
@@ -81,16 +77,15 @@
                                 <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Motivo</th>
-                                <th scope="col">Id Paciente</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Opciones</th>
+                                <th scope="col">Paciente</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">ID Doctor</th>
+                                <th scope="col">ID Enfermera</th>
                                 </tr>
                             </thead>
                             <tbody>`;
-					var dato= sessionStorage.data
-                    fetch(`http://localhost:8000/citasAsignada/${dato}`)
+					var enfermera= sessionStorage.data
+                    fetch(`http://localhost:8000/getFactura`)
                     .then(response => response.json())
                     .then(data =>{
                         var i;
@@ -101,12 +96,11 @@
                                     <tr>
                                     <th scope="row">${i+1}</th>
                                     <td>${data[i].fecha}</td>
-                                    <td>${data[i].hora}</td>
-                                    <td>${data[i].motivo}</td>
-                                    <td>${data[i].idpaciente}</td>
-                                    <td>${data[i].estado}</td>
-                                    <td><button onclick=" completitar('${data[i].motivo}','${data[i].fecha}','${data[i].hora}','${data[i].idpaciente}')" style="background-color:rgb(218,165,32); color:white" ><h4><i class="fa fa-check-circle-o"  style="color:white"> </i></h4>&nbsp;Completar Cita&nbsp;</button>
-									</tr>
+                                    <td>${data[i].paciente}</td>
+                                    <td>${data[i].total}</td>
+                                    <td>${data[i].doctor}</td>
+                                    <td>${data[i].enfermera}</td>
+                                    </tr>
                                     `
                             console.log(data[i].nombre,'prueba')
                         }
@@ -125,10 +119,15 @@
 		</div>
 	</div>
 </section>
+<div>
+	<br>
+	<CENTER><button id="reporte1" style="background-color:red; color: white;" ><h4><i class="fa fa-file-pdf-o"  style="color:white"></i></h4>GENERAR REPORTE</button></CENTER><BR><BR>
+</div>
+
 <!-- THE END OF SECTIONS -->	
-	<section>
-		<div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-	</section>
+<section>
+	<div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+</section>
 <!-- FOOTER
 ================================================== -->
 <footer id="footer" class="footer2">
@@ -161,8 +160,9 @@
 <script src="assets/js/plugins.js"></script>
 <script src="contact/topvalidate.js"></script>
 <script src="contact/bottomvalidate.js"></script>
-<script src="../js/dataLogin.js"></script>
-<script src="js/citaspendientes.js"></script>
+<script src="js/html2pdf.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/reporteList.js"></script>
 
 </body>
 </html>

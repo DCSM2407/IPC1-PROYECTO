@@ -3,6 +3,8 @@ from flask_cors import CORS
 from manager import manager
 from usuario import usuario
 from medicamento import medicamento
+from receta import receta
+from factura import factura
 from cita import cita
 app = Flask(__name__)
 
@@ -40,6 +42,38 @@ def registrar():
         return '{"estado":"Usuario Creado Exitosamente"}'
     else:
         return '{"estado":"El Usuario Ya Existe"}'
+
+#INICIO DE SESION 
+@app.route('/recuperar/<user>')
+def recuperar(user):
+    dato = Manager.recuperar(user)
+    if dato == None:
+        return '{"estado":"No"}'
+    else:
+        return jsonify({'estado':dato.password})
+    
+
+# REGISTRO DE RECETAS
+@app.route('/receta', methods=['POST'])
+def registrarReceta():
+    dato=request.json
+    recet=receta(dato['idpaciente'],dato['nombre'], dato['padecimiento'],dato['descripcion'],dato['iddoctor'],dato['fecha'])
+    prueba=Manager.registrarReceta(recet)
+    if prueba ==True:
+        return '{"estado":"Receta Creada"}'
+    else:
+        return '{"estado":"ERROR"}'
+
+# REGISTRO FACTURAS
+@app.route('/registrarFactura', methods=['POST'])
+def registrarFactura():
+    dato=request.json
+    fact=factura(dato['fecha'],dato['nombre'],dato['doctor'],dato['consulta'],dato['operacion'],dato['internado'],dato['total'],dato['enfermera'])
+    prueba=Manager.registrarFactura(fact)
+    if prueba ==True:
+        return '{"estado":"Factura Creada"}'
+    else:
+        return '{"estado":"ERROR"}'
 
 
 # CREAR CITASS
@@ -136,6 +170,12 @@ def enfermeraM(pac):
 def doctorM(pac):
     return Manager.getDoctor(pac)
 
+
+# PARA OBTENER DATOS DE CITAS PARA EL LISTADO
+@app.route('/recetasC/<doc>')
+def getRecetas(doc):
+    return Manager.getRecetaDoc(doc)
+
 # PARA OBTENER DATOS DE CITAS PARA EL LISTADO
 @app.route('/citas/<pac>')
 def getCitas(pac):
@@ -168,6 +208,11 @@ def getCitasList():
 @app.route('/citasA')
 def getCitasListAcept():
     return Manager.getCitasListAcept()
+
+# PARA OBTENER DATOS DE FACTURA LISTADO 
+@app.route('/getFactura')
+def getFactura():
+    return Manager.getFactura()
 
 # PARA MOSTRAR DATOS ADMIN EN MODIFICAR
 @app.route('/mostrarAdmin')
@@ -222,6 +267,20 @@ def eliminarMedicamento(medicina):
     if (Manager.eliminarMedicamento(medicina)):
         return 'Medicamento Eliminado'
     return 'Error'
+
+# RUTA PARA ELIMINAR CITAS EN DOCTOR
+@app.route('/citaDelete/<paciente>/<padecimiento>/<fecha>/<doctor>', methods=['DELETE'])
+def EliminarRecta(paciente,padecimiento,fecha,doctor):
+    if (Manager.eliminarReceta(paciente, padecimiento, fecha, doctor)):
+        return 'Receta Eliminada'
+    return 'Error'
+
+# PARA MOSTRAR DATOS DE ENFERMERAS 
+@app.route('/mostrarRecetaC/<paci>/<fech>/<doc>/<pad>')
+def recetaGet(paci,fech,doc,pad):
+    user = Manager.getReceta(paci,fech,doc,pad)
+    return jsonify({'idpaciente':user.idpaciente,'nombre':user.paciente,'padecimiento':user.padecimiento,'descripcion':user.descripcion,'iddoctor':user.iddoctor,'fecha':user.fecha}) 
+
 
 @app.route('/modificarAdmin/<user>',methods=["PUT"])
 def modificarAdmin(user):
@@ -280,6 +339,15 @@ def CitaAceptada(paciente,fecha,hora):
     if (Manager.modificarCita(paciente,fecha,hora,cambio)):
         return '{"Estado":"Cita Aceptada"}'
     return '{"Estado":"Error"}'
+
+@app.route('/modificarReceta/<paciente>/<fecha>/<doc>/<padecimiento>', methods=["PUT"])
+def modificarReceta(paciente,fecha,doc,padecimiento):
+    dato = request.json
+    cambio = receta(dato['idpaciente'], dato['nombre'], dato['padecimiento'], dato['descripcion'], dato['iddoctor'], dato['fecha'])
+    if (Manager.modificarReceta(paciente, fecha, doc, padecimiento, cambio)):
+        return '{"Estado":"Receta Modificada"}'
+    return '{"Estado":"Error"}'
+
 # EJECUTA LA API :3
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
