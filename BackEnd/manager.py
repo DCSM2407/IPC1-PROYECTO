@@ -81,9 +81,9 @@ class manager:
             if i.nombre == medicina.nombre:
                 return True
         return False
+
     def ObtenerDoctor(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'doctor'])
-    
     
     def ObtenerEnfemeras(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'enfermera'])

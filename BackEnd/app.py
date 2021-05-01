@@ -15,7 +15,7 @@ Manager = manager()
 
 @app.route('/')
 def home():
-    return '[IPC 1] PROYECTO2 \n DILAN CONAHER SUY MIRANDA - 201801194\n '
+    return '[IPC 1] PROYECTO2 -- DILAN CONAHER SUY MIRANDA - 201801194\n '
 
 #INICIO DE SESION 
 @app.route('/sesion/<user>/<password>')
