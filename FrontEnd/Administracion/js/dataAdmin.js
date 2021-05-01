@@ -226,6 +226,7 @@ function ActualizarPaciente(){
 function AbrirDoctor(doctor){
     sessionStorage.setItem("dato",doctor)
     console.log(doctor);
+    ActualizarDoctor()
     window.location.href='../Administracion/mostrarDoctores.html'
 }
 
@@ -241,6 +242,7 @@ function ModificarDoctor(doctor){
 function AbrirPaciente(paciente){
     sessionStorage.setItem("dato3",paciente)
     console.log(paciente);
+    ActualizarPaciente()
     window.location.href='../Administracion/mostrarPaciente.html'
 }
 
@@ -255,6 +257,7 @@ function ModificarPac(dato){
 function AbrirEnfermera(enfermera){
     sessionStorage.setItem("dato1",enfermera)
     console.log(enfermera);
+    ActualizarEnfermera()
     window.location.href='../Administracion/mostrarEnfermera.html'
 }
 
@@ -269,6 +272,7 @@ function ModificarEnfermera(enfermera){
 function AbrirMedicamento(medicamento){
     sessionStorage.setItem("dato2",medicamento)
     console.log(medicamento);
+    ActualizarMedicamento()
     window.location.href='../Administracion/mostrarMedicamento.html'
 }
 
