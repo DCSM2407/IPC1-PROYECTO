@@ -1,104 +1,114 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
+
 <head>
-<title>Administracion | Pacientes</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all'/>
-<link rel='stylesheet' href='assets/css/animate.min.css' type='text/css' media='all'/>
-<link rel='stylesheet' href='style.css' type='text/css' media='all'/>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C700italic%2C300%2C400%2C700%2C800%7CMontserrat%3A300italic%2C400italic%2C700italic%2C300%2C400%2C700%7CDosis%3A400%2C700&#038;ver=4.5' type='text/css' media='all'/>
-<link rel='stylesheet' href='icons/elegantline/style.css' type='text/css' media='all'/>
-<link rel='stylesheet' href='assets/css/font-awesome.min.css' type='text/css' media='all' />
-<link rel='stylesheet' href='assets/css/flexslider.css' type='text/css' media='all'/>
+	<title>Administracion | Pacientes</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='assets/css/bootstrap.min.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='assets/css/animate.min.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='style.css' type='text/css' media='all' />
+	<link rel='stylesheet'
+		href='https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C700italic%2C300%2C400%2C700%2C800%7CMontserrat%3A300italic%2C400italic%2C700italic%2C300%2C400%2C700%7CDosis%3A400%2C700&#038;ver=4.5'
+		type='text/css' media='all' />
+	<link rel='stylesheet' href='icons/elegantline/style.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='assets/css/font-awesome.min.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='assets/css/flexslider.css' type='text/css' media='all' />
 </head>
+
 <body class="frontpage">
-<div class="page-loader">
-	<img src="assets/img/loader.gif" alt="loader">
-</div>
-
-<!-- Header
-================================================== -->
-<header id="header">
-<div id="mega-menu" class="header header2 header-sticky primary-menu icons-no default-skin zoomIn align-right">
-	<nav class="navbar navbar-default redq">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="index.html">
-			<img src="assets/img/logo-dark.png" alt="logo">
-			</a>
-		</div>
-		<div class="collapse navbar-collapse" id="navbar">
-			<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
-			<div class="menu-top-menu-container">
-				<ul id="menu-top-menu" class="nav navbar-nav nav-list">
-					<li><a href="administracion.html">Inicio</a></li>
-					<li><a href="#home">Paciente</a></li>
-					<li><a href="doctores.html">Doctor</a></li>
-					<li><a href="enfermeras.html">Enfermera</a></li>
-					<li><a href="medicamento.html">Medicamento</a></li>
-					<li><a href="modificarAdmin.html">Perfil</a></li>
-					<li><a href="../index.html">Salir</a></li>
-					<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
-				</ul>
-			</div>
-		</div>
-		<!-- /.navbar-collapse -->
+	<div class="page-loader">
+		<img src="assets/img/loader.gif" alt="loader">
 	</div>
-	<!-- /.container -->
-	</nav>
-</div>
-</header>	
 
-<!-- INTRO
+	<!-- Header
 ================================================== -->
-<section id="home" style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
-	<div class="container">
-		<div class="textwidget">
-			<h1 class="toptitle">MÓDULO <br /> PACIENTES <br /><br /><br/><i><img
-				src="assets/img/icon.png"></i>
-			</h1>								
-			<div class="contactstyle topform">
-				<form method="post" action="contact/topcontact.php" id="topcontactform">
-					<div class="form">
-						<center><h3>Cargar Pacientes Por CSV</h3></center>
-						<br><center><p>Seleccione un archivo CSV para agregar Pacientes</p></center>
-						<input type="file" id="archivo2" name="archivoPacientes" accept="CSV/csv, .csv, .CSV">
-						<input type="submit" id="subirPacientes" class="clearfix btn" value="Cargar Pacientes">
+	<header id="header">
+		<div id="mega-menu" class="header header2 header-sticky primary-menu icons-no default-skin zoomIn align-right">
+			<nav class="navbar navbar-default redq">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+							data-target="#navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">
+							<img src="assets/img/logo-dark.png" alt="logo">
+						</a>
 					</div>
-				</form>
-				<div class="done">
-					<div class="alert alert-success">
-						<button type="button" class="close" data-dismiss="alert">×</button>
-						Your message has been sent. Thank you!
+					<div class="collapse navbar-collapse" id="navbar">
+						<a class="mobile-menu-close"><i class="fa fa-close"></i></a>
+						<div class="menu-top-menu-container">
+							<ul id="menu-top-menu" class="nav navbar-nav nav-list">
+								<li><a href="administracion.html">Inicio</a></li>
+								<li><a href="#home">Paciente</a></li>
+								<li><a href="doctores.html">Doctor</a></li>
+								<li><a href="enfermeras.html">Enfermera</a></li>
+								<li><a href="medicamento.html">Medicamento</a></li>
+								<li><a href="modificarAdmin.html">Perfil</a></li>
+								<li><a href="../index.html">Salir</a></li>
+								<!--	<li style="background: rgba(255, 255, 0, 0.51);"><a target="_blank" href="https://www.wowthemes.net/themes/expertum/">Informacion</a></li>-->
+							</ul>
+						</div>
 					</div>
+					<!-- /.navbar-collapse -->
 				</div>
-			</div>							
+				<!-- /.container -->
+			</nav>
 		</div>
-		</div>
-</section>
+	</header>
 
-<!-- MOSTRAR LISTADO DE PACIENTES-->>
-<section id="services" class="services margintop60">
-	<div class="container">
-		<div class="sow-headline">
-			<img src="assets/img/logo-dark.png">
-			<h1>LISTADO DE PACIENTES</h1>
-			<div class="decoration">
-				<div class="decoration-inside">
+	<!-- INTRO
+================================================== -->
+	<section id="home"
+		style="padding:160px 0;background-image: url(assets/img/medical.jpg); background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
+		<div class="container">
+			<div class="textwidget">
+				<h1 class="toptitle">MÓDULO <br /> PACIENTES <br /><br /><br /><i><img src="assets/img/icon.png"></i>
+				</h1>
+				<div class="contactstyle topform">
+					<form method="post" action="contact/topcontact.php" id="topcontactform">
+						<div class="form">
+							<center>
+								<h3>Cargar Pacientes Por CSV</h3>
+							</center>
+							<br>
+							<center>
+								<p>Seleccione un archivo CSV para agregar Pacientes</p>
+							</center>
+							<input type="file" id="archivo2" name="archivoPacientes" accept="CSV/csv, .csv, .CSV">
+							<input type="submit" id="subirPacientes" class="clearfix btn" value="Cargar Pacientes">
+						</div>
+					</form>
+					<div class="done">
+						<div class="alert alert-success">
+							<button type="button" class="close" data-dismiss="alert">×</button>
+							Your message has been sent. Thank you!
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div >
-			<div id="tablausers" class="row">
-                <script>
-                    let text2=`<table class="table">
+	</section>
+
+	<!-- MOSTRAR LISTADO DE PACIENTES-->>
+	<section id="services" class="services margintop60">
+		<div class="container">
+			<div class="sow-headline">
+				<img src="assets/img/logo-dark.png">
+				<h1>LISTADO DE PACIENTES</h1>
+				<div class="decoration">
+					<div class="decoration-inside">
+					</div>
+				</div>
+			</div>
+			<div>
+				<div id="tablausers" class="row">
+					<script>
+						let text2 = `<table class="table">
                                 <thead>
                                 <tr>
                                 <th scope="col">#</th>
@@ -111,16 +121,16 @@
                                 </tr>
                             </thead>
                             <tbody>`;
-                    fetch('http://uhospitalproyectoback.herokuapp.com/pacientes')
-                    .then(response => response.json())
-                    .then(data =>{
-                        var i;
+						fetch('http://uhospitalproyectoback.herokuapp.com/pacientes')
+							.then(response => response.json())
+							.then(data => {
+								var i;
 
-                        
-                        for(i=0;i<data.length;i++){
-                            text2+= `
+
+								for (i = 0; i < data.length; i++) {
+									text2 += `
                                     <tr>
-                                    <th scope="row">${i+1}</th>
+                                    <th scope="row">${i + 1}</th>
                                     <td>${data[i].nombre}</td>
                                     <td>${data[i].apellido}</td>
                                     <td>${data[i].sexo}</td>
@@ -131,69 +141,70 @@
 										<button onclick=" eliminarPaciente('${data[i].usuario}')"  style="background-color:red"><h4><i class="fa fa-trash-o"  style="color:white"></i></h4></button></td>
                                     </tr>
                                     `
-                            console.log(data[i].nombre,'prueba')
-                        }
-                        text2+=`</tbody>
+									console.log(data[i].nombre, 'prueba')
+								}
+								text2 += `</tbody>
                                 </table>`
-                        document.getElementById("tablausers").innerHTML = text2;
-                    });
+								document.getElementById("tablausers").innerHTML = text2;
+							});
+					</script>
+				</div>
+				<div>
 
-					ActualizarPaciente()
-                </script>
-             </div>
-			 <div>
-
-			 </div>
+				</div>
+			</div>
+			<div>
+				<br>
+			</div>
 		</div>
-		<div>
-			<br>
-		</div>
+	</section>
+	<div>
+		<br>
+		<CENTER><button id="reporte1" style="background-color:red; color: white;">
+				<h4><i class="fa fa-file-pdf-o" style="color:white"></i></h4>GENERAR REPORTE
+			</button></CENTER><BR><BR>
 	</div>
-</section>
-<div>
-	<br>
-	<CENTER><button id="reporte1" style="background-color:red; color: white;" ><h4><i class="fa fa-file-pdf-o"  style="color:white"></i></h4>GENERAR REPORTE</button></CENTER><BR><BR>
-</div>
-<!-- THE END OF SECTIONS -->	
-	
-<!-- FOOTER
+	<!-- THE END OF SECTIONS -->
+
+	<!-- FOOTER
 ================================================== -->
-<footer id="footer" class="footer2">
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<small>
-					&copy; <a>
+	<footer id="footer" class="footer2">
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<small>
+							&copy; <a>
 								Dilan Suy - Creator!
 							</a>
-					</small>
-				</div>
-				<div class="col-md-6 text-right">
-					<div class="footer-menu">
-						<ul id="menu-footer-links" class="menu">
-							<li><a><i class="fa fa-facebook"></i> Facebook</a></li>
-							<li><a><i class="fa fa-twitter"></i>  Twitter</a></li>
-						</ul>
+						</small>
+					</div>
+					<div class="col-md-6 text-right">
+						<div class="footer-menu">
+							<ul id="menu-footer-links" class="menu">
+								<li><a><i class="fa fa-facebook"></i> Facebook</a></li>
+								<li><a><i class="fa fa-twitter"></i> Twitter</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
 
-<!-- SCRIPTS
+	<!-- SCRIPTS
 ================================================== -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/plugins.js"></script>
-<script src="contact/topvalidate.js"></script>
-<script src="contact/bottomvalidate.js"></script>
-<script src="js/html2pdf.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/papaparse.min.js"></script>
-<script src="js/cargaMasivaPac.js"></script>
-<script src="js/reportePaciente.js"></script>
-<script src="js/dataAdmin.js"></script>
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/plugins.js"></script>
+	<script src="contact/topvalidate.js"></script>
+	<script src="contact/bottomvalidate.js"></script>
+	<script src="js/html2pdf.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/papaparse.min.js"></script>
+	<script src="js/cargaMasivaPac.js"></script>
+	<script src="js/reportePaciente.js"></script>
+	<script src="js/dataAdmin.js"></script>
 
 </body>
+
 </html>
