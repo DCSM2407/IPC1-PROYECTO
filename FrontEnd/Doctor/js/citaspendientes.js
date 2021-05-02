@@ -233,7 +233,6 @@ function AbrirReceta(idpaciente, iddoctor) {
 function datosReceta() {
     var pacient = sessionStorage.data1
     var docto = sessionStorage.data2
-    var da = document.getElementById("nombre").value
 
     fetch(`http://uhospitalproyectoback.herokuapp.com/getDatoNombre/${pacient}`)
         .then(response => response.json())

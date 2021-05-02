@@ -19,6 +19,7 @@ class manager:
         self.usuarios.append(usuario('Cinthia','Lopez','yesenia',"1234",'24/07/1998','F','12345678','oftamologo','enfermera'))
         self.usuarios.append(usuario('Nataly','Guzman','nataly',"1234",'24/07/1998','F','12345678','oftamologo','paciente'))
         self.medicamentos.append(medicamento('Paracetamol',"125.20","Para dolor de Cabeza","20"))
+        self.citas.append(cita("nataly","05-05-2021","14:20","Dolor Cabeza","Pendiente","Ninguno"))
         
     def verificarUsuario(self,user,password):
         for x in self.usuarios:

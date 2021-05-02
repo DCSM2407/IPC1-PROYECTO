@@ -40,7 +40,6 @@ function modificarEnfer(){
         telefono.value=''
         usuario.value=''
          alert("Cambio Realizado")
-         window.location.href='enfermeras.html'
       })
       .catch(error => {
         console.error('Error:', error);

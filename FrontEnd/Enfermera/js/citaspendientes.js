@@ -80,7 +80,7 @@ function actualizarC() {
                             </thead>
                             <tbody>`;
     var enfermera = sessionStorage.data
-    fetch(`http://localhost:8000/citas`)
+    fetch(`http://uhospitalproyectoback.herokuapp.com/citas`)
         .then(response => response.json())
         .then(data => {
             var i;
@@ -117,7 +117,47 @@ function AbrirAsignacion(fecha, hora, idpaciente, motivo) {
     window.location.href = 'asignarCita.html'
 }
 
+function aceptadas() {
+    document.getElementById("tablausers").innerHTML = '';
+    let text2 = `<table class="table">
+    <thead>
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col">Fecha</th>
+    <th scope="col">Hora</th>
+    <th scope="col">Motivo</th>
+    <th scope="col">ID Paciente</th>
+    <th scope="col">ID Doctor Asignado</th>
+    <th scope="col">Estado</th>
+    </tr>
+</thead>
+<tbody>`;
+    var enfermera = sessionStorage.data
+    fetch(`http://uhospitalproyectoback.herokuapp.com/citasA`)
+        .then(response => response.json())
+        .then(data => {
+            var i;
 
+
+            for (i = 0; i < data.length; i++) {
+                text2 += `
+        <tr>
+        <th scope="row">${i + 1}</th>
+        <td>${data[i].fecha}</td>
+        <td>${data[i].hora}</td>
+        <td>${data[i].motivo}</td>
+        <td>${data[i].idpaciente}</td>
+        <td>${data[i].iddoctor}</td>
+        <td>${data[i].estado}</td>
+        </tr>
+        `
+                console.log(data[i].nombre, 'prueba')
+            }
+            text2 += `</tbody>
+    </table>`
+            document.getElementById("tablausers").innerHTML = text2;
+        });
+}
 
 function MostrarDatosCita() {
     var dato1 = sessionStorage.dato1
