@@ -13,13 +13,12 @@ class manager:
         self.citas=[]
         self.recetas=[]
         self.facturas=[]
-
         self.usuarios.append(usuario('Carlos','Campaneros','admin',"1234",'24/07/1998','M','12345678','ninguna','admin'))
         self.usuarios.append(usuario('Dilan','Suy','dilan',"1234",'24/07/1998','M','12345678','oftamologo','doctor'))
         self.usuarios.append(usuario('Cinthia','Lopez','yesenia',"1234",'24/07/1998','F','12345678','oftamologo','enfermera'))
         self.usuarios.append(usuario('Nataly','Guzman','nataly',"1234",'24/07/1998','F','12345678','oftamologo','paciente'))
         self.medicamentos.append(medicamento('Paracetamol',"125.20","Para dolor de Cabeza","20"))
-        self.citas.append(cita("nataly","05-05-2021","14:20","Dolor Cabeza","Pendiente","Ninguno"))
+        self.citas.append(cita("nataly","2021-05-05","14:20","Dolor de Cabeza","Pendiente","Ninguno"))
         
     def verificarUsuario(self,user,password):
         for x in self.usuarios:
@@ -126,8 +125,7 @@ class manager:
     
     def getCitasAsignadas(self,doctor):
         return json.dumps([ob.__dict__ for ob in self.citas if ob.iddoctor == doctor and ob.estado == 'Aceptada' ])
-    
-    
+        
     def getCitasComplete(self,doctor):
         return json.dumps([ob.__dict__ for ob in self.citas if ob.iddoctor == doctor and ob.estado == 'Completada' ])
     
