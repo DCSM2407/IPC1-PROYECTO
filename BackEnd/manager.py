@@ -94,8 +94,7 @@ class manager:
 
     def ObtenerAdmin(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios if ob.tipo == 'admin'])
-    
-    
+        
     def ObtenerMedicamentos(self):
         return json.dumps([ob.__dict__ for ob in self.medicamentos])
     

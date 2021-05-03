@@ -8,3 +8,6 @@ class factura:
         self.internado = internado
         self.total = total
         self.enfermera = enfermera
+
+
+        

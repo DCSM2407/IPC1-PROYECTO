@@ -6,3 +6,6 @@ class receta:
         self.descripcion = descripcion
         self.iddoctor = iddoctor
         self.fecha = fecha
+
+
+        

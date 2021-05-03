@@ -133,8 +133,6 @@ def masivaMed():
     else:
         return '{"estado":"El Usuario Ya Existe"}'
 
-
-
 # PARA OBTENER DATOS DE DOCTORES   
 @app.route('/doctores')
 def doctores():
@@ -170,7 +168,6 @@ def enfermeraM(pac):
 def doctorM(pac):
     return Manager.getDoctor(pac)
 
-
 # PARA OBTENER DATOS DE CITAS PARA EL LISTADO
 @app.route('/recetasC/<doc>')
 def getRecetas(doc):
@@ -191,8 +188,6 @@ def getCitasAsignadas(doc):
 def getDatoNombre(paciente):
     dato = Manager.getDatoNombre(paciente)
     return jsonify({'name':dato.nombre,'last':dato.apellido})
-
-
 
 # PARA OBTENER DATOS DE CITAS PARA EL LISTADO
 @app.route('/citasComplete/<doc>')
@@ -244,7 +239,6 @@ def medGet(med):
     medical = Manager.RetornoMedic(med)
     return jsonify({'nombre': medical.nombre,'precio':medical.precio,'descripcion':medical.descripcion,'cantidad':medical.cantidad}) 
 
-
 # PARA OBTENER DATOS DE MEDICAMENTOS
 @app.route('/medicamento')
 def medicam():
@@ -281,7 +275,6 @@ def recetaGet(paci,fech,doc,pad):
     user = Manager.getReceta(paci,fech,doc,pad)
     return jsonify({'idpaciente':user.idpaciente,'nombre':user.paciente,'padecimiento':user.padecimiento,'descripcion':user.descripcion,'iddoctor':user.iddoctor,'fecha':user.fecha}) 
 
-
 @app.route('/modificarAdmin/<user>',methods=["PUT"])
 def modificarAdmin(user):
     dato=request.json
@@ -314,7 +307,6 @@ def modificarPac(user):
         return '{"Estado":"Doctor Modificado"}'
     return '{"Estado":"Error"}'
 
-
 @app.route('/modificarMed/<med>', methods=["PUT"])
 def modificarMed(med):
     dato = request.json
@@ -330,7 +322,6 @@ def modificarCita(paciente,fecha,hora):
     if (Manager.modificarCita(paciente,fecha,hora,cambio)):
         return '{"Estado":"Cita Rechazada"}'
     return '{"Estado":"Error"}'
-
 
 @app.route('/modificarCita/<paciente>/<fecha>/<hora>', methods=["PUT"])
 def CitaAceptada(paciente,fecha,hora):
@@ -351,3 +342,4 @@ def modificarReceta(paciente,fecha,doc,padecimiento):
 # EJECUTA LA API :3
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
+

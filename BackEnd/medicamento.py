@@ -4,3 +4,6 @@ class medicamento:
         self.precio = precio
         self.descripcion = descripcion
         self.cantidad = cantidad
+
+
+        

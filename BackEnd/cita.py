@@ -6,3 +6,8 @@ class cita:
         self.motivo = motivo
         self.estado = estado
         self.iddoctor = iddoctor
+
+
+
+
+        

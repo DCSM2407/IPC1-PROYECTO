@@ -9,3 +9,6 @@ class usuario:
         self.telefono = telefono
         self.especialidad = especialidad
         self.tipo = tipo
+
+
+        
