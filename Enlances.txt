@@ -1,0 +1,12 @@
+[IPC1 C] - PROYECTO2 
+NOMBRE: DILAN SUY
+CARNÉ: 201801194
+
+REPOSITORIO GITHUB:
+https://github.com/DCSM2407/IPC1-PROYECTO.git
+
+ENLACE PARA DESPLEGAR LA API:
+http://uhospitalproyectoback.herokuapp.com/
+
+ENLACE PARA DESPLEGAR LA PAGINA WEB:
+http://uhospitalproyectofront.herokuapp.com/
